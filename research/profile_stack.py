@@ -106,7 +106,7 @@ class PhaseMonitor:
         m.free_tool_id(self.tool)
 
 
-def child(root, directory, mode):
+def child(root, directory, mode, light_timeline=False):
     assert not any(n in sys.modules for n in ('torch', 'transformers', 'solution', 'soup_cli'))
     mon = PhaseMonitor()
     original_import = bootstrap._find_and_load
@@ -261,7 +261,8 @@ def child(root, directory, mode):
                                           'duration_s': time.perf_counter()-started})
                     profiler = torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
                         schedule=torch.profiler.schedule(wait=2, warmup=1, active=3, repeat=1),
-                        on_trace_ready=ready, record_shapes=True, with_stack=True, profile_memory=True)
+                        on_trace_ready=ready, record_shapes=not light_timeline,
+                        with_stack=not light_timeline, profile_memory=not light_timeline)
                     profiler.start()
                 memory_checkpoint('train.begin')
 
@@ -356,7 +357,8 @@ def child(root, directory, mode):
     mon.on_enter, mon.on_leave = enter, leave
     def flush(stage):
         data = {'classification': 'DIAGNOSTIC ONLY; overhead included, not a qualified benchmark',
-                'mode': mode, 'entry_perf': ENTRY_PERF, 'last_perf': time.perf_counter(),
+                'mode': mode, 'light_timeline': light_timeline,
+                'entry_perf': ENTRY_PERF, 'last_perf': time.perf_counter(),
                 'stage': stage, 'spans': mon.rows, 'marks': mon.marks, 'warnings': warnings,
                 'monitored_codes': sorted(set(mon.codes.values())), 'memory_marks': step_records,
                 'original_argv': original_argv, 'source_root': str(root),
@@ -382,7 +384,7 @@ def child(root, directory, mode):
     return rc
 
 
-def parent(source, directory, mode):
+def parent(source, directory, mode, light_timeline=False):
     from hashlib import sha256
     sys.path.insert(0, str(source / 'harness'))
     from common import OFFLINE_ENV, run_logged
@@ -393,8 +395,11 @@ def parent(source, directory, mode):
                TRITON_CACHE_DIR=str(directory / 'triton_cache'), TORCHINDUCTOR_CACHE_DIR=str(directory / 'inductor_cache'))
     assert not Path(env['TRITON_CACHE_DIR']).exists()
     before = time.perf_counter()
-    result = run_logged([sys.executable, str(Path(__file__).resolve()), '--child', '--source', str(source),
-                         '--out', str(directory), '--mode', mode], directory / 'train.log', 900, env)
+    child_args = [sys.executable, str(Path(__file__).resolve()), '--child', '--source', str(source),
+                  '--out', str(directory), '--mode', mode]
+    if light_timeline:
+        child_args.append('--light-timeline')
+    result = run_logged(child_args, directory / 'train.log', 900, env)
     after = time.perf_counter()
     phases = json.loads((directory / 'PHASES.json').read_text()) if (directory / 'PHASES.json').exists() else {}
     metrics = json.loads((directory / 'metrics.json').read_text()) if (directory / 'metrics.json').exists() else {}
@@ -414,10 +419,11 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--mode', choices=('phases', 'timeline', 'memory'), required=True)
     p.add_argument('--child', action='store_true')
+    p.add_argument('--light-timeline', action='store_true')
     args = p.parse_args()
     if args.child:
-        sys.exit(child(args.source.resolve(), args.out.resolve(), args.mode))
-    parent(args.source.resolve(), args.out.resolve(), args.mode)
+        sys.exit(child(args.source.resolve(), args.out.resolve(), args.mode, args.light_timeline))
+    parent(args.source.resolve(), args.out.resolve(), args.mode, args.light_timeline)
 
 
 if __name__ == '__main__':

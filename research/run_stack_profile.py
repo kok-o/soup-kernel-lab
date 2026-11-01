@@ -20,6 +20,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--prepare-only', action='store_true')
     p.add_argument('--modes', nargs='+', choices=('phases', 'timeline', 'memory'), default=['phases', 'timeline', 'memory'])
+    p.add_argument('--light-timeline', action='store_true')
     a = p.parse_args()
     assert len(a.commit) == 40 and all(c in '0123456789abcdef' for c in a.commit)
     out = a.out.resolve()
@@ -42,7 +43,10 @@ def main():
     for mode in a.modes:
         directory = out / mode
         print('DIAGNOSTIC MODE:', mode, flush=True)
-        rc = subprocess.run([sys.executable, str(observer), '--source', str(root), '--out', str(directory), '--mode', mode], cwd=root).returncode
+        command = [sys.executable, str(observer), '--source', str(root), '--out', str(directory), '--mode', mode]
+        if a.light_timeline and mode == 'timeline':
+            command.append('--light-timeline')
+        rc = subprocess.run(command, cwd=root).returncode
         record['results'][mode] = {'exit_code': rc}
         if (directory / 'PARENT.json').exists():
             record['results'][mode]['parent'] = json.loads((directory / 'PARENT.json').read_text())

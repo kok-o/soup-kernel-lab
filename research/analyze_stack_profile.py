@@ -218,6 +218,8 @@ def main():
         result['memory']={}
         for kind in ('allocated','reserved'):
             name='memory/'+kind+'-peak-snapshot.json.gz'
+            if name not in z.namelist():
+                continue
             result['memory'][kind]=memory(json.loads(gzip.decompress(z.read(name))))
             result['memory'][kind]['mark']=json.loads(z.read('memory/'+kind.upper()+'_PEAK_MARK.json'))
         a.out.write_text(json.dumps(result,indent=2)+'\n')
