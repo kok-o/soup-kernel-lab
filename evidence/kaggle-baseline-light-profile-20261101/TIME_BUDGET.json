@@ -1,0 +1,145 @@
+{
+  "classification": "DIAGNOSTIC ONLY",
+  "categories": {
+    "cpu_op": 292682,
+    "fwdbwd": 25792,
+    "user_annotation": 19360,
+    "cuda_sync": 11649,
+    "ac2g": 238150,
+    "cuda_runtime": 140456,
+    "kernel": 38916,
+    "gpu_memcpy": 12824,
+    "cuda_event": 24568,
+    "cuda_driver": 8580,
+    "gpu_memset": 1157,
+    "overhead": 19,
+    "gpu_user_annotation": 10912,
+    "null": 70,
+    "Trace": 1
+  },
+  "profiler_steps": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "gpu_window_ms": 7896.197255859375,
+  "exclusive_gpu_window_ms": {
+    "compute_active": 2498.824630859375,
+    "copies_without_compute": 1310.0109770507813,
+    "other_gpu_activity": 0.6084697265625,
+    "no_gpu_activity": 4086.753178222656
+  },
+  "no_gpu_activity_by_submission_ms": {
+    "before_next_api_call": 3682.4113505859377,
+    "during_next_api_call": 322.136056640625,
+    "after_next_api_return": 82.20577099609375
+  },
+  "host_submission_delays_by_macro_ms": {
+    "frozen_projections": 773.4454052734375,
+    "head": 6.39832568359375,
+    "activation_storage": 1137.363224609375,
+    "outside_marked_regions": 1765.2043950195311
+  },
+  "gpu_macro_coverage": {
+    "outside_marked_regions": {
+      "compute_ms": 879.169970703125,
+      "copies_without_any_compute_ms": 13.41486328125,
+      "h2d_bytes": 111775104
+    },
+    "frozen_projections": {
+      "compute_ms": 1289.0072416992186,
+      "copies_without_any_compute_ms": 471.64058935546876,
+      "h2d_bytes": 10806642688
+    },
+    "activation_storage": {
+      "compute_ms": 108.120763671875,
+      "copies_without_any_compute_ms": 766.6003334960938,
+      "h2d_bytes": 4673431176
+    },
+    "head": {
+      "compute_ms": 222.52665478515624,
+      "copies_without_any_compute_ms": 103.5387431640625,
+      "h2d_bytes": 3733979200
+    }
+  },
+  "cuda_sync_events_present": true,
+  "cuda_sync_by_name": {
+    "Context Sync": {
+      "count": 17,
+      "sum_ms": 0.40562799999999993
+    },
+    "Stream Sync": {
+      "count": 248,
+      "sum_ms": 201.55430799999988
+    },
+    "Event Sync": {
+      "count": 1104,
+      "sum_ms": 3.9957059999999993
+    },
+    "Stream Wait Event": {
+      "count": 10280,
+      "sum_ms": 19.263125000000002
+    }
+  },
+  "cuda_sync_with_no_gpu_activity_ms": 14.09224755859375,
+  "kernel_class_sums_not_additive_ms": {
+    "other_compute": {
+      "count": 15876,
+      "sum_ms": 684.169993000006
+    },
+    "casts_and_copies": {
+      "count": 10272,
+      "sum_ms": 209.93859899999828
+    },
+    "gemm": {
+      "count": 6096,
+      "sum_ms": 1222.2190390000053
+    },
+    "weight_dequantize": {
+      "count": 6224,
+      "sum_ms": 272.79589699999985
+    },
+    "attention": {
+      "count": 448,
+      "sum_ms": 109.70103499999989
+    }
+  },
+  "reference_phase_step_s": [
+    1.0157,
+    0.6035,
+    0.5973,
+    0.6125,
+    0.6777,
+    0.6023,
+    0.5999,
+    0.6112
+  ],
+  "reference_phase_sample_s": 5.3201,
+  "profiled_cpu_step_s": [
+    1.336604769,
+    0.9480936609999999,
+    0.929314132,
+    0.920269403,
+    0.9344289250000001,
+    0.917414983,
+    1.006606916,
+    0.9082028689999999
+  ],
+  "profiled_cpu_sample_s": 7.900935658,
+  "limitations": [
+    "The domain is first-to-last recorded GPU activity, excluding CPU work outside those boundaries.",
+    "Compute includes time concurrent with DMA. Copy-only means physical DMA activity without a recorded compute kernel; it does not prove all that time is removable.",
+    "Before-next-API time is a host submission delay for the first following activity, including required CPU work and profiler overhead. It is not automatically removable Python overhead.",
+    "After-API time can include dependencies, device scheduling or driver effects; absence of sync metadata cannot turn it into a transfer-wait measurement.",
+    "Sync intervals can overlap computation, copies and host gaps; their sums are not another additive budget.",
+    "A CUPTI Stream Wait Event activity duration is not the complete consumer wait until its event becomes ready. Do not use sync-record duration as a measured GPU stall without event/stream dependency reconstruction.",
+    "Do not multiply a few variable-length steps into an asserted full-run time. Full-run estimates need explicit sampling/overhead assumptions."
+  ],
+  "commit": "06dc4b1957fbe1e23b4b32fa420d3205890fa553",
+  "raw_sha256": "0ece550f00812b82eae6f480ea1384c2a5d0c5cbb6fc3dcbc4e536797ca9da67"
+}

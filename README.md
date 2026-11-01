@@ -25,8 +25,10 @@ notebooks remain available, without installing rejected changes by default.
 
 [Fresh phase, CUDA and allocation profile](evidence/kaggle-offload28-profile-20261101/README.md)
 is diagnostic only. Heavy profiling doubled the observed three-step window;
-its CPU gaps are not accepted full-run overhead. No new candidates are being
-started while the time budget is analyzed.
+its CPU gaps are not accepted full-run overhead. The
+[time-budget report](evidence/kaggle-baseline-light-profile-20261101/README.md)
+separates measured coverage from approximate full-cycle estimates and records
+the next direction's3-6 s hypothesis. No new candidates are being started.
 
 ## Start on Kaggle
 

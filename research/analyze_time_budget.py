@@ -4,7 +4,7 @@ These are diagnostic intervals, not a counterfactual speedup or full-run timing.
 In particular, copy-only activity is not automatically a removable dependency.
 """
 import argparse
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 from collections import Counter, defaultdict
 import gzip
 import hashlib
@@ -35,6 +35,7 @@ def analyze(trace, phase_metrics):
                and 'correlation' in e.get('args', {})}
     starts = [e['ts'] for e in gpu]
     gaps = defaultdict(float)
+    host_delays = []
     for (_, a), (b, _) in zip(occupied, occupied[1:]):
         following = gpu[bisect_left(starts, b)]
         api = runtime.get(following.get('args', {}).get('correlation'))
@@ -43,9 +44,45 @@ def analyze(trace, phase_metrics):
             continue
         api_start, api_end = api['ts'], api['ts']+api['dur']
         gaps['before_next_api_call'] += max(0, min(b, api_start)-a)
+        if api_start > a:
+            host_delays.append((a, min(b, api_start)))
         gaps['during_next_api_call'] += max(0, min(b, api_end)-max(a, api_start))
         gaps['after_next_api_return'] += max(0, b-max(a, api_end))
     assert abs(sum(gaps.values())-idle_us) < 1, (gaps, idle_us)
+    macro_ranges = defaultdict(list)
+    macro_order = ('frozen_projections', 'head', 'activation_storage')
+    def macro_name(name):
+        return ('frozen_projections' if name.startswith('NF4.') else 'head' if name.startswith('Head.')
+                else 'activation_storage' if name.startswith('Activation.') else None)
+    for e in events:
+        group = macro_name(e.get('name', ''))
+        if group and e.get('ph') == 'X' and e.get('cat') == 'user_annotation':
+            macro_ranges[group].append((e['ts'], e['ts']+e['dur']))
+    macro_ranges = {k:union(v) for k,v in macro_ranges.items()}
+    macro_starts = {k:[a for a,b in v] for k,v in macro_ranges.items()}
+    covered, covered_us, host_by_macro = [], 0.0, {}
+    for group in macro_order:
+        covered = union(covered+macro_ranges.get(group, []))
+        now = overlap(host_delays, covered)
+        host_by_macro[group] = (now-covered_us)/1000
+        covered_us = now
+    host_by_macro['outside_marked_regions'] = (duration(host_delays)-covered_us)/1000
+    macro_gpu = defaultdict(lambda: {'compute':[], 'copies':[], 'h2d_bytes':0})
+    for e in gpu:
+        api = runtime.get(e.get('args',{}).get('correlation'))
+        group = 'outside_marked_regions'
+        if api:
+            for candidate in macro_order:
+                i = bisect_right(macro_starts.get(candidate,[]), api['ts'])-1
+                if i >= 0 and macro_ranges[candidate][i][1] >= api['ts']:
+                    group = candidate
+                    break
+        if e['cat'] == 'kernel':
+            macro_gpu[group]['compute'].append((e['ts'],e['ts']+e['dur']))
+        elif e['cat'] == 'gpu_memcpy':
+            macro_gpu[group]['copies'].append((e['ts'],e['ts']+e['dur']))
+            if 'HtoD' in e['name']:
+                macro_gpu[group]['h2d_bytes'] += e.get('args',{}).get('bytes',0)
     sync = [e for e in events if e.get('ph') == 'X' and 'sync' in e.get('cat', '').lower()]
     sync_groups = defaultdict(lambda: {'count': 0, 'sum_ms': 0.0})
     for e in sync:
@@ -74,6 +111,10 @@ def analyze(trace, phase_metrics):
             'profiler_steps': numbers, 'gpu_window_ms': (end-start)/1000,
             'exclusive_gpu_window_ms': coverage,
             'no_gpu_activity_by_submission_ms': {k:v/1000 for k,v in gaps.items()},
+            'host_submission_delays_by_macro_ms':host_by_macro,
+            'gpu_macro_coverage':{k:{'compute_ms':duration(v['compute'])/1000,
+                'copies_without_any_compute_ms':(duration(v['copies'])-overlap(v['copies'],compute))/1000,
+                'h2d_bytes':v['h2d_bytes']} for k,v in macro_gpu.items()},
             'cuda_sync_events_present': bool(sync), 'cuda_sync_by_name': dict(sync_groups),
             'cuda_sync_with_no_gpu_activity_ms': (duration(sync_spans)-overlap(sync_spans, occupied))/1000,
             'kernel_class_sums_not_additive_ms': dict(classes),
@@ -86,6 +127,7 @@ def analyze(trace, phase_metrics):
                 'Before-next-API time is a host submission delay for the first following activity, including required CPU work and profiler overhead. It is not automatically removable Python overhead.',
                 'After-API time can include dependencies, device scheduling or driver effects; absence of sync metadata cannot turn it into a transfer-wait measurement.',
                 'Sync intervals can overlap computation, copies and host gaps; their sums are not another additive budget.',
+                'A CUPTI Stream Wait Event activity duration is not the complete consumer wait until its event becomes ready. Do not use sync-record duration as a measured GPU stall without event/stream dependency reconstruction.',
                 'Do not multiply a few variable-length steps into an asserted full-run time. Full-run estimates need explicit sampling/overhead assumptions.'
             ]}
 
