@@ -187,7 +187,13 @@ def memory(data):
             return (frames[0]['filename'].split('/solution/')[-1]+':'+str(frames[0]['line'])+':'+frames[0]['name']) if frames else 'library_or_unknown'
         groups=defaultdict(int)
         for v in peak_live.values():groups[origin(v)]+=v['size']
-        results.append({'device':device,'trace_entries':len(events),'initial_live_mib':sum(v['size'] for v in current.values())/2**20,
+        segments=[s for s in data['segments'] if s.get('device')==device]
+        segment_requests=[{'action':e['action'],'size_mib':e['size']/2**20,'frames':e.get('frames',[])[:10]}
+                          for e in events if e['action'] in ('segment_alloc','segment_map')]
+        results.append({'device':device,'trace_entries':len(events),'snapshot_live_mib':sum(v['size'] for v in current.values())/2**20,
+                        'snapshot_reserved_mib':sum(s['total_size'] for s in segments)/2**20,
+                        'snapshot_physical_active_mib':sum(s['active_size'] for s in segments)/2**20,
+                        'largest_segment_requests':sorted(segment_requests,key=lambda x:x['size_mib'],reverse=True)[:20],
                         'reconstructed_peak_mib':peak/2**20,'peak_event_index':peak_index,
                         'live_at_peak_mib_by_origin':{k:v/2**20 for k,v in sorted(groups.items(),key=lambda x:x[1],reverse=True)},
                         'largest_live_allocations':[{'size_mib':v['size']/2**20,'origin':origin(v),'frames':v['frames'][:12]}
@@ -205,7 +211,8 @@ def main():
         for n,h in provenance['source_sha256'].items():assert hashlib.sha256(z.read(n)).hexdigest()==h
         result={'source':provenance['commit'],'classification':'DIAGNOSTIC ONLY','raw_sha256':hashlib.sha256(a.raw.read_bytes()).hexdigest()}
         result['phases']=phases(json.loads(z.read('phases/PHASES.json')),json.loads(z.read('phases/PARENT.json')))
-        result['timeline']=timeline(json.loads(gzip.decompress(z.read('timeline/timeline.json.gz'))))
+        trace=z.read('timeline/timeline.json.gz')
+        result['timeline']=timeline(json.loads(gzip.decompress(trace) if trace.startswith(b'\x1f\x8b') else trace))
         result['memory']={}
         for kind in ('allocated','reserved'):
             name='memory/'+kind+'-peak-snapshot.json.gz'
