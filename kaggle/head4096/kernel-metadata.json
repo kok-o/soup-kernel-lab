@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-head4096",
+  "title": "Soup Lab Head4096",
+  "code_file": "soup-lab-head4096.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

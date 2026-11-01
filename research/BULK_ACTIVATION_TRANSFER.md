@@ -1,5 +1,12 @@
 # Bulk activation transfer experiment
 
+Decision: **not selected**. Original ABBA is 62.55 s versus 62.81 s control,
+both 495 MiB /10 checks. The 0.26 s delta is not a convincing speedup. The
+selected `solution/` has been restored byte-for-byte to `06dc4b1`; candidate
+`77cfc4d` and its complete raw source remain available for reproduction.
+[Evidence](../evidence/kaggle-bulk-h2d-20261101/README.md).
+The following describes the experiment before measurement.
+
 Control runtime: `06dc4b1957fbe1e23b4b32fa420d3205890fa553`, all 28 layers
 offloaded, qualified at 65.33 s /495 MiB on Kaggle T4. Target remains <=46 s
 full cold /<=500 MiB external peak with all ten original checks.
