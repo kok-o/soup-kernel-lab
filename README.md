@@ -5,7 +5,7 @@ Independent repository, not a fork or a new competition submission.
 
 ## Start on Kaggle
 
-- [New research notebook](https://www.kaggle.com/code/koko667/soup-kernel-lab) (private to its owner initially).
+- [New research notebook](https://www.kaggle.com/code/koko667/soup-kernel-lab-independent-experiments) (private to its owner initially).
 - [Notebook source](kaggle/soup-kernel-lab.ipynb).
 - Enable Internet, select a Tesla T4 accelerator and set `RUN_TRAINING = True`.
 - Set `REF` to your pushed branch or exact commit SHA. Default `main` fetches the latest main at session start.
