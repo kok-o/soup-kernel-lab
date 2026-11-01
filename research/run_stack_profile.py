@@ -19,6 +19,7 @@ def main():
     p.add_argument('--commit', required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--prepare-only', action='store_true')
+    p.add_argument('--modes', nargs='+', choices=('phases', 'timeline', 'memory'), default=['phases', 'timeline', 'memory'])
     a = p.parse_args()
     assert len(a.commit) == 40 and all(c in '0123456789abcdef' for c in a.commit)
     out = a.out.resolve()
@@ -38,7 +39,7 @@ def main():
     sys.path.insert(0, str(root / 'harness'))
     from run_task import warm_up
     warm_up(out)
-    for mode in ('phases', 'timeline', 'memory'):
+    for mode in a.modes:
         directory = out / mode
         print('DIAGNOSTIC MODE:', mode, flush=True)
         rc = subprocess.run([sys.executable, str(observer), '--source', str(root), '--out', str(directory), '--mode', mode], cwd=root).returncode
@@ -54,7 +55,7 @@ def main():
     files['research/run_stack_profile.py'] = Path(__file__)
     files['PROFILE_PROVENANCE.json'] = out / 'PROFILE_PROVENANCE.json'
     files['warmup.log'] = out / 'warmup.log'
-    for mode in ('phases', 'timeline', 'memory'):
+    for mode in a.modes:
         for path in (out / mode).iterdir():
             if path.is_file() and (path.suffix in ('.json', '.log', '.txt', '.yaml') or path.name.endswith('.json.gz')):
                 files[mode + '/' + path.name] = path

@@ -137,10 +137,12 @@ def timeline(data):
         if kind in ('h2d', 'd2h'):
             agg[kind+'_bytes'] += b
     occupied = union([(e['ts'], e['ts']+e['dur']) for e in gpu])
+    ordered_gpu = sorted(gpu, key=lambda e:e['ts'])
+    gpu_starts = [e['ts'] for e in ordered_gpu]
     gaps = []
     for (_, a), (b, _) in zip(occupied, occupied[1:]):
         if b-a >= 50:
-            next_e = min((e for e in gpu if e['ts'] >= b-0.001), key=lambda e:e['ts'])
+            next_e = ordered_gpu[max(0, bisect_right(gpu_starts, b-0.001))]
             launch = runtime.get(next_e.get('args', {}).get('correlation'))
             gaps.append({'start_us':a, 'duration_us':b-a, 'next_activity':next_e['name'],
                          'next_region':region(next_e), 'launch_after_gap_start_us':None if launch is None else launch['ts']-a,
