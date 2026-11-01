@@ -1,4 +1,4 @@
-"""Screen bulk activation H2D, then qualify with two untouched ABBA suites."""
+"""Screen a narrow transfer experiment, then run two untouched ABBA suites."""
 import argparse
 import json
 import os
@@ -27,6 +27,7 @@ def main():
     p.add_argument('--candidate', required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--prepare-only', action='store_true')
+    p.add_argument('--experiment', choices=('bulk', 'head4096'), default='bulk')
     a = p.parse_args()
     assert all(len(r) == 40 and all(c in '0123456789abcdef' for c in r)
                for r in (a.control, a.candidate))
@@ -37,7 +38,9 @@ def main():
                [('control', a.control), ('candidate', a.candidate)]}
     before, after = [records[n]['source_sha256'] for n in roots]
     changed = sorted(n for n in before.keys() | after.keys() if before.get(n) != after.get(n))
-    assert changed == ['solution/activation_offload.py', 'solution/test_activation_bulk_transfer.py'], changed
+    allowed = {'bulk': ['solution/activation_offload.py', 'solution/test_activation_bulk_transfer.py'],
+               'head4096': ['solution/__init__.py', 'solution/runtime_compile.py']}
+    assert changed == allowed[a.experiment], changed
     assert all(b'patch_selective_offload(layers=28)' in (r/'solution/__init__.py').read_bytes() for r in roots.values())
     write_json(out/'COMPARISON_INPUTS.json', records)
     if a.prepare_only:
@@ -46,7 +49,7 @@ def main():
     names = subprocess.check_output(['nvidia-smi', '--query-gpu=name', '--format=csv,noheader'], text=True)
     assert 'T4' in names, names
     write_json(out/'GPU_INVENTORY.json', {'names': names})
-    report = {'experiment': 'Layer host slabs and bulk activation H2D, all 28 layers offloaded',
+    report = {'experiment': a.experiment,
               'order': ['control screen', 'candidate screen', 'control ABBA', 'candidate ABBA'],
               'screen': {}, 'results': {},
               'limitations': 'Single-run screens are not qualification. Final results are sequential original 2+2 ABBA suites on one Kaggle T4 session; report base drift. All times include cold compilation. Profile timings are separate diagnostics.'}

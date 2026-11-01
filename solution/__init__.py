@@ -31,7 +31,7 @@ def apply():
     configure_blas()
 
     from .runtime_compile import start_runtime_compile
-    start_runtime_compile()
+    start_runtime_compile(head_chunk_size=4096)
 
     from .activation_storage import patch_activation_storage
     from .ce import owned_aligned_ce
@@ -91,4 +91,4 @@ def apply():
     from .stream_loader import install as install_stream_weights
     install_stream_weights()
     from .host_head import patch_host_head
-    patch_host_head(chunk_size=8192)
+    patch_host_head(chunk_size=4096)

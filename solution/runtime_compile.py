@@ -12,7 +12,7 @@ _pending = None
 _started = False
 
 
-def _jobs():
+def _jobs(head_chunk_size=8192):
     import torch
     from triton.runtime.jit import MockTensor
 
@@ -59,11 +59,12 @@ def _jobs():
         add(_kernel(), (h, f, 512), block=4096)
     # HostHead uses online row statistics instead of the registered CE backend.
     # Compile real full and tail layouts; the measured process still pays this cost.
-    for columns in (8192, 4480):
+    for columns in (head_chunk_size, 151936 % head_chunk_size):
+        block_columns = 1 << (columns - 1).bit_length()
         add(_hosthead_row_stats,
             (h, h, label, h, f, f, f, f, label, f, h, f,
              columns, columns, 1536, 0),
-            feature_count=1536, block_cols=8192, block_features=2048,
+            feature_count=1536, block_cols=block_columns, block_features=2048,
             enable_fp_fusion=False)
     add(example_swiglu_fwd_kernel, (h, h, h, 8960), BLOCK=1024)
     add(example_swiglu_bwd_kernel, (h, h, h, h, h, 8960), BLOCK=1024)
@@ -121,7 +122,7 @@ def finish_runtime_compile():
         Console().print({"runtime_compile_fallback": failures})
 
 
-def start_runtime_compile():
+def start_runtime_compile(head_chunk_size=8192):
     import torch
 
     global _pending, _started
@@ -140,7 +141,7 @@ def start_runtime_compile():
 
         forward._setww_runtime_compile = True
         Qwen2Model.forward = forward
-    jobs = _jobs()
+    jobs = _jobs(head_chunk_size=head_chunk_size)
     executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="setww-cold-compile")
     _started = True
     _pending = (executor, [executor.submit(_compile, job) for job in jobs])
