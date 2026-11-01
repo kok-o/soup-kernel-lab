@@ -7,6 +7,8 @@ H2D prefetching into compute-stream-allocated staging slots.
 import weakref
 
 _PINNED_SLOTS = []
+_PINNED_LAYER_SLABS = [[] for _ in range(28)]
+_HOST_SLAB_BYTES = 48 * 2**20
 _H2D_STREAMS = {}
 _LAYER_EVENTS = [None] * 28
 _SLOT_FREE_EVENTS = [None, None]
@@ -85,6 +87,59 @@ def _alloc_pinned(slot_idx, shape, dtype, nbytes):
     else:
         _PINNED_SLOTS.append((buf, weakref.ref(view)))
     return view
+
+
+def _alloc_layer_pinned(layer, allocations, shape, dtype, nbytes):
+    """Place saved host views in aligned slabs, without reusing live views.
+
+    A fresh hooks closure is one forward generation. If a previous graph still
+    owns any view, its slab remains leased. Large layers safely use more slabs.
+    This changes host storage only; GPU staging capacities remain unchanged.
+    """
+    import torch
+
+    size = (max(nbytes, 1) + 255) & ~255
+    chunks = allocations.setdefault(layer, [])
+    if not chunks or chunks[-1][1] + size > chunks[-1][0]['buffer'].numel():
+        entry = next((e for e in _PINNED_LAYER_SLABS[layer]
+                      if e['buffer'].numel() >= size and not any(r() is not None for r in e['views'])), None)
+        if entry is None:
+            capacity = (max(_HOST_SLAB_BYTES, size) + 65535) & ~65535
+            entry = {'buffer': torch.empty(capacity, dtype=torch.uint8, device='cpu', pin_memory=True), 'views': []}
+            _PINNED_LAYER_SLABS[layer].append(entry)
+        else:
+            entry['views'].clear()
+        chunks.append([entry, 0])
+    entry, offset = chunks[-1]
+    view = entry['buffer'][offset:offset+nbytes].view(dtype).reshape(shape)
+    chunks[-1][1] += size
+    entry['views'].append(weakref.ref(view))
+    return view
+
+
+def _copy_prefetch_views(buffer, views):
+    """Copy adjacent host-slab views as byte ranges into existing GPU storage."""
+    import torch
+
+    runs = []
+    for item, first, second in views:
+        sources = ((item.packet.packed, first), (item.packet.scales, second)) if second is not None else ((item.host_tensor, first),)
+        for host, target in sources:
+            storage = host.untyped_storage()
+            start = host.storage_offset() * host.element_size()
+            destination = target.storage_offset() * target.element_size()
+            nbytes = host.numel() * host.element_size()
+            if (runs and runs[-1][0].data_ptr() == storage.data_ptr()
+                    and start-runs[-1][1] == destination-runs[-1][2]
+                    and start >= runs[-1][1]+runs[-1][3]):
+                runs[-1][3] = start+nbytes-runs[-1][1]
+            else:
+                runs.append([storage, start, destination, nbytes])
+    for storage, start, destination, nbytes in runs:
+        # Alias the pinned storage; the CPU tensor below owns no new data.
+        host_bytes = torch.empty(0, dtype=torch.uint8, device='cpu').set_(
+            storage, start, (nbytes,), (1,))
+        buffer[destination:destination+nbytes].copy_(host_bytes, non_blocking=True)
 
 
 def _clear_slot(slot):
@@ -179,12 +234,7 @@ def prefetch_layer(layer_idx):
             done = torch.cuda.Event()
             _SLOT_DONE_EVENTS[slot] = done
         with torch.cuda.stream(h2d_stream):
-            for item, v1, v2 in views:
-                if v2 is not None:
-                    v1.copy_(item.packet.packed, non_blocking=True)
-                    v2.copy_(item.packet.scales, non_blocking=True)
-                else:
-                    v1.copy_(item.host_tensor, non_blocking=True)
+            _copy_prefetch_views(buf, views)
             done.record(h2d_stream)
         for item, v1, v2 in views:
             if v2 is not None:
@@ -206,6 +256,7 @@ def offload_packed_hooks(
     wrappers = {}
     raw_wrappers = {}
     slot_cursor = 0
+    layer_allocations = {}
 
     def _d2h_copy_packet(packet, layer):
         nonlocal slot_cursor
@@ -215,9 +266,9 @@ def offload_packed_hooks(
         with torch.cuda.device(device):
             stream = torch.cuda.current_stream(device)
             if layer is not None and 0 <= layer < 28:
-                host_packed = _alloc_pinned(slot_cursor, packet.packed.shape, packet.packed.dtype, nb_p)
+                host_packed = _alloc_layer_pinned(layer, layer_allocations, packet.packed.shape, packet.packed.dtype, nb_p)
                 slot_cursor += 1
-                host_scales = _alloc_pinned(slot_cursor, packet.scales.shape, packet.scales.dtype, nb_s)
+                host_scales = _alloc_layer_pinned(layer, layer_allocations, packet.scales.shape, packet.scales.dtype, nb_s)
                 slot_cursor += 1
                 ready = _get_layer_event(layer)
             else:
@@ -240,7 +291,7 @@ def offload_packed_hooks(
         nonlocal slot_cursor
         device = tensor.device
         nb = tensor.numel() * tensor.element_size()
-        host_tensor = _alloc_pinned(slot_cursor, tensor.shape, tensor.dtype, nb)
+        host_tensor = _alloc_layer_pinned(layer, layer_allocations, tensor.shape, tensor.dtype, nb)
         slot_cursor += 1
         with torch.cuda.device(device):
             stream = torch.cuda.current_stream(device)
