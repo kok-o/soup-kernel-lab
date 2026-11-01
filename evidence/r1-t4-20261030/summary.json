@@ -1,0 +1,95 @@
+{
+  "runs_pilot": {
+    "summary": {
+      "base": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 85.92,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 53.92,
+        "eval_loss": 2.04967
+      },
+      "solution": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 89.49,
+        "gpu_peak_mib": 10005,
+        "train_loop_s": 66.01,
+        "eval_loss": 2.04965
+      },
+      "ratios": {
+        "speedup": 0.9601,
+        "memory_ratio": 1.4338,
+        "quality_delta_pct": -0.001
+      }
+    },
+    "passed": 10,
+    "failed": []
+  },
+  "runs_abba": {
+    "summary": {
+      "base": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 79.32,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 55.68,
+        "eval_loss": 2.04967
+      },
+      "solution": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 90.36,
+        "gpu_peak_mib": 10005,
+        "train_loop_s": 66.84,
+        "eval_loss": 2.04966
+      },
+      "ratios": {
+        "speedup": 0.8778,
+        "memory_ratio": 1.4338,
+        "quality_delta_pct": -0.0
+      }
+    },
+    "passed": 9,
+    "failed": [
+      {
+        "check": "8. not worse than the base on time or memory (10% margin)",
+        "ok": false,
+        "detail": "time x1.139, memory x0.697 of the base"
+      }
+    ]
+  },
+  "runs_dynamic": {
+    "summary": {
+      "base": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 78.05,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 54.33,
+        "eval_loss": 2.04966
+      },
+      "solution": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 75.44,
+        "gpu_peak_mib": 10005,
+        "train_loop_s": 52.05,
+        "eval_loss": 2.04967
+      },
+      "ratios": {
+        "speedup": 1.0346,
+        "memory_ratio": 1.4338,
+        "quality_delta_pct": 0.0
+      }
+    },
+    "passed": 9,
+    "failed": [
+      {
+        "check": "4. own kernels together take >= 5% of the training time",
+        "ok": false,
+        "detail": "0.9% of the training time (lowest of 1 runs, steps 3+)"
+      }
+    ]
+  }
+}

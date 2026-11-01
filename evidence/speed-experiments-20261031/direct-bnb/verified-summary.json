@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "5de1730981df12f3d6b8c9a70d538815f04d0ce21951809491ea4152c9399e88",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_direct_bnb_screen",
+      "source_commit": "8cb38761871c600dd233a746c5e807a4ba63e951",
+      "solution_sha256": "f7952e616d4dc8a238e1b170df39d9bbe85a273025d9d337490e353930c102bf",
+      "result_sha256": "991b6ddfb2335121a3f14b74d6033c26a71eaf641817c4554b0626662a7515ea",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 66.44,
+          "gpu_peak_mib": 2827,
+          "train_loop_s": 40.54,
+          "eval_loss": 2.05212
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

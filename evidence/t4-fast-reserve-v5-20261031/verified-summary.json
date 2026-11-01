@@ -1,0 +1,53 @@
+{
+  "archive_sha256": "bf5449188be4e5bfbe62f7f859909b949940d0b67c3f2b0c08ac00df80326963",
+  "manifest_files": 56,
+  "cases": [
+    {
+      "case": "runs_fast_reserve_v5_screen",
+      "source_commit": "a017d6fea308e7c250323ad70f44af34ef9e3d93",
+      "solution_sha256": "68cab873fca0c754556c68cca72dd80aca67a4b1066619c7c7b5624c0971da32",
+      "result_sha256": "905dd7d9a0ff9f274db474309480f0c50e3e366915af3b217eb778905bf195f8",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 65.49,
+          "gpu_peak_mib": 2447,
+          "train_loop_s": 38.77,
+          "eval_loss": 2.05218
+        }
+      },
+      "official_checks": null
+    },
+    {
+      "case": "runs_fast_reserve_v5_abba",
+      "source_commit": "a017d6fea308e7c250323ad70f44af34ef9e3d93",
+      "solution_sha256": "68cab873fca0c754556c68cca72dd80aca67a4b1066619c7c7b5624c0971da32",
+      "result_sha256": "b48cc1f35178d78d408ebd21b30a50a30d1805648510743c7e197adb45aa2904",
+      "summary": {
+        "base": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 81.97,
+          "gpu_peak_mib": 14345,
+          "train_loop_s": 58.16,
+          "eval_loss": 2.04963
+        },
+        "solution": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 65.08,
+          "gpu_peak_mib": 2447,
+          "train_loop_s": 38.83,
+          "eval_loss": 2.05207
+        },
+        "ratios": {
+          "speedup": 1.2595,
+          "memory_ratio": 5.8623,
+          "quality_delta_pct": 0.119
+        }
+      },
+      "official_checks": 10
+    }
+  ]
+}

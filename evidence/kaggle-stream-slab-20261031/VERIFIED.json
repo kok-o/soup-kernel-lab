@@ -1,0 +1,89 @@
+{
+  "source": "d070881332c9925744871bfbd38987f7fb3f3130",
+  "raw_sha256": "15a0975db104cc2c04b41265f05feb84f668a756b9df2a0ee3cd8de2358fae21",
+  "manifest_entries": 138,
+  "source_files": 95,
+  "all_checks": 10,
+  "summary": {
+    "base": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 83.6,
+      "gpu_peak_mib": 14345,
+      "train_loop_s": 56.34,
+      "eval_loss": 2.04963
+    },
+    "solution": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 68.58,
+      "gpu_peak_mib": 495,
+      "train_loop_s": 43.45,
+      "eval_loss": 2.05216
+    },
+    "ratios": {
+      "speedup": 1.219,
+      "memory_ratio": 28.9798,
+      "quality_delta_pct": 0.123
+    }
+  },
+  "versions": {
+    "python": "3.13.15",
+    "soup-cli": "0.77.0",
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "trl": "0.29.1",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.14.0",
+    "datasets": "4.8.5",
+    "gpus": [
+      "Tesla T4, 580.178.04",
+      "Tesla T4, 580.178.04"
+    ]
+  },
+  "runs": [
+    {
+      "run": "base_1",
+      "wall_s": 87.23,
+      "gpu_peak_mib": 14345
+    },
+    {
+      "run": "base_2",
+      "wall_s": 79.97,
+      "gpu_peak_mib": 14345
+    },
+    {
+      "run": "solution_1",
+      "wall_s": 68.9,
+      "gpu_peak_mib": 495
+    },
+    {
+      "run": "solution_2",
+      "wall_s": 68.25,
+      "gpu_peak_mib": 495
+    }
+  ],
+  "protected_files": [
+    "harness/_train.py",
+    "harness/check_rules.py",
+    "harness/common.py",
+    "harness/eval_adapter.py",
+    "harness/example_reference.py",
+    "harness/run_task.py",
+    "harness/score.py",
+    "task/prepare_data.py",
+    "task/task.yaml",
+    "tests/conftest.py",
+    "tests/test_callback.py",
+    "tests/test_config.py",
+    "tests/test_formats.py",
+    "tests/test_loader.py",
+    "tests/test_trainer_init.py"
+  ],
+  "minimum_own_kernel_share": [
+    "7.8% of the training time (lowest of 2 runs, steps 3+)"
+  ],
+  "tests": ".................................ss..................................... [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 58%]\n........................................................................ [ 77%]\n........................................................................ [ 97%]\n...........                                                              [100%]\n=============================== warnings summary ===============================\n../../../usr/local/lib/python3.13/dist-packages/torch/jit/_script.py:365: 14 warnings\n  /usr/local/lib/python3.13/dist-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n369 passed, 2 skipped, 14 warnings in 36.36s\n"
+}

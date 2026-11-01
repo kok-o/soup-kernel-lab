@@ -1,0 +1,50 @@
+[
+  {
+    "bits": 4,
+    "kind": "pack",
+    "variant": "reserve",
+    "median_ms": 0.7107840180397034
+  },
+  {
+    "bits": 4,
+    "kind": "pack",
+    "variant": "grouped",
+    "median_ms": 0.41870400309562683
+  },
+  {
+    "bits": 4,
+    "kind": "unpack",
+    "variant": "reserve",
+    "median_ms": 0.2931840121746063
+  },
+  {
+    "bits": 4,
+    "kind": "unpack",
+    "variant": "grouped",
+    "median_ms": 0.26763199269771576
+  },
+  {
+    "bits": 8,
+    "kind": "pack",
+    "variant": "reserve",
+    "median_ms": 0.07235199958086014
+  },
+  {
+    "bits": 8,
+    "kind": "pack",
+    "variant": "grouped",
+    "median_ms": 0.09849599748849869
+  },
+  {
+    "bits": 8,
+    "kind": "unpack",
+    "variant": "reserve",
+    "median_ms": 0.07913599908351898
+  },
+  {
+    "bits": 8,
+    "kind": "unpack",
+    "variant": "grouped",
+    "median_ms": 0.0843840017914772
+  }
+]

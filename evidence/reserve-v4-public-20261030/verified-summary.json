@@ -1,0 +1,31 @@
+{
+  "notebook_version": 363974052,
+  "source_manifest_verified": 73,
+  "source_commit": "9e6a3129a94f2b914a4bfc57de548691ea650260",
+  "result_sha256": "9912507dfbca1def6bb87b02bf5bf3082a60404427f59298debe34583ffd50a9",
+  "archive_sha256": "51622c5bd959455bc63b250fd783dd1a26347afd0120c1244a552a1df2e53d97",
+  "summary": {
+    "base": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 87.23,
+      "gpu_peak_mib": 14345,
+      "train_loop_s": 60.52,
+      "eval_loss": 2.04965
+    },
+    "solution": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 69.42,
+      "gpu_peak_mib": 2463,
+      "train_loop_s": 45.61,
+      "eval_loss": 2.05227
+    },
+    "ratios": {
+      "speedup": 1.2566,
+      "memory_ratio": 5.8242,
+      "quality_delta_pct": 0.128
+    }
+  },
+  "checks_passed": 10
+}

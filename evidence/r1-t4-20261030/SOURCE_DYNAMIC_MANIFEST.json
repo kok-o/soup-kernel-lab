@@ -1,0 +1,10 @@
+{
+  "solution/__init__.py": "3714ec59050a600734f480fb36a170883b197b2be15667ca110fb526b02da836",
+  "solution/_ce_kernels.py": "ecc328c127fcd9317c92b79fe95fb4e97274a287457a043019ed7356b7e10b48",
+  "solution/ce.py": "02b8ed775215f580ce06929b9c46eb77f33fa2a7a05fa9f7bec359fac81b0d43",
+  "solution/ce_patch.py": "b19133dd4c2d0c06d1d4d3047fffa7347cb7ceb600ecfb3d924ca17c2215b301",
+  "solution/swiglu.py": "e665910faeca6091c958ed7a191604484a44216f51d6fa069f5f48220e7472e6",
+  "solution/test_ce.py": "53b3ec14a4aa989d44f6de097a535ac7cd084461188db5c975300ce26ec19580",
+  "solution/test_ce_patch.py": "192af8b060a1ea3ace05f5998f136020a5208a7b85fdf799383f3ef7a6208416",
+  "solution/test_kernels.py": "a45b842a4f22c1aefe404baeff1ac26511253452ecb0f633c985fbc9df8b252a"
+}

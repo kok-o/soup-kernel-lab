@@ -1,0 +1,12 @@
+.................................ss..................................... [ 20%]
+........................................................................ [ 41%]
+........................................................................ [ 61%]
+........................................................................ [ 82%]
+..............................................................           [100%]
+=============================== warnings summary ===============================
+../.venv/lib/python3.13/site-packages/torch/jit/_script.py:365: 14 warnings
+  /home/ubuntu/workspace/soup-lab/.venv/lib/python3.13/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+348 passed, 2 skipped, 14 warnings in 18.35s

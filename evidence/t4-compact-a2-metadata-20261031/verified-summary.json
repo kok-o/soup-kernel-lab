@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "7a9244ed78c417fffba81286fdba244e67a8210685d7b5c1953d600087658d41",
+  "manifest_files": 39,
+  "cases": [
+    {
+      "case": "runs_compact_a2_metadata_abba",
+      "source_commit": "a9ac67ea6c17e61127613e976d39a096a298058d",
+      "solution_sha256": "53d2057ac60abda2d7ec00a441c91d5b20bb9551973a874582cb1e12e98e338d",
+      "result_sha256": "55a5463566b34b80273ac5bc9102a294295531039e5be540a297c6fbbf1e13b6",
+      "summary": {
+        "base": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 80.74,
+          "gpu_peak_mib": 14345,
+          "train_loop_s": 56.64,
+          "eval_loss": 2.04967
+        },
+        "solution": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 57.89,
+          "gpu_peak_mib": 2307,
+          "train_loop_s": 33.22,
+          "eval_loss": 2.05212
+        },
+        "ratios": {
+          "speedup": 1.3947,
+          "memory_ratio": 6.218,
+          "quality_delta_pct": 0.12
+        }
+      },
+      "official_checks": 10
+    }
+  ]
+}

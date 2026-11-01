@@ -1,0 +1,51 @@
+{
+  "commit": "9e6a3129a94f2b914a4bfc57de548691ea650260",
+  "solution_sha256": "c391e8691927583e7db8ccec95d229d323d081f0e508b198d758743c24727936",
+  "own_candidates": {
+    "activation_pack_kernel": "solution\\_activation_kernels.py",
+    "activation_unpack_kernel": "solution\\_activation_kernels.py",
+    "activation_pack4_kernel": "solution\\_activation_kernels.py",
+    "activation_unpack4_kernel": "solution\\_activation_kernels.py",
+    "ce_partition_kernel": "solution\\_ce_kernels.py",
+    "ce_merge_kernel": "solution\\_ce_kernels.py",
+    "ce_backward_kernel": "solution\\_ce_kernels.py",
+    "dropout_mask_pack_kernel": "solution\\_dropout_kernels.py",
+    "dropout_mask_gradient_kernel": "solution\\_dropout_kernels.py",
+    "lora_scale_add_kernel": "solution\\_lora_kernels.py",
+    "lora_scale_gradient_kernel": "solution\\_lora_kernels.py",
+    "rmsnorm_forward_kernel": "solution\\_rmsnorm_kernels.py",
+    "rmsnorm_backward_kernel": "solution\\_rmsnorm_kernels.py",
+    "rotary_forward_kernel": "solution\\_rope_kernels.py",
+    "rotary_backward_kernel": "solution\\_rope_kernels.py",
+    "training_dtype_cast": "solution\\dtype_cast.py",
+    "fork_gradient_sum_kernel": "solution\\fork_sum.py"
+  },
+  "starter_and_derivatives_excluded": [
+    "example_swiglu_packed_bwd_kernel",
+    "example_swiglu_fwd_kernel",
+    "example_swiglu_bwd_kernel"
+  ],
+  "AST_likeness_to_starter": {
+    "activation_pack_kernel": 0.448632,
+    "activation_unpack_kernel": 0.606571,
+    "activation_pack4_kernel": 0.294688,
+    "activation_unpack4_kernel": 0.244656,
+    "ce_partition_kernel": 0.341362,
+    "ce_merge_kernel": 0.267642,
+    "ce_backward_kernel": 0.317192,
+    "dropout_mask_pack_kernel": 0.429583,
+    "dropout_mask_gradient_kernel": 0.557785,
+    "lora_scale_add_kernel": 0.76346,
+    "lora_scale_gradient_kernel": 0.614332,
+    "rmsnorm_forward_kernel": 0.363319,
+    "rmsnorm_backward_kernel": 0.391532,
+    "rotary_forward_kernel": 0.28979,
+    "rotary_backward_kernel": 0.290134,
+    "training_dtype_cast": 0.656489,
+    "fork_gradient_sum_kernel": 0.794288
+  },
+  "lookalikes_at_0_8": [],
+  "banned_imports": [],
+  "parse_errors": [],
+  "official_files_unchanged_from_qualified_v3": true
+}

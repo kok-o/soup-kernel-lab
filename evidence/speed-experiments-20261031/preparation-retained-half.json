@@ -1,0 +1,20 @@
+{
+  "diagnostic_only": true,
+  "mode": "retained_half",
+  "preparation_s": 0.015237495998007944,
+  "before_allocated_mib": 1090.4287109375,
+  "previous_peak_mib": 1115.5908203125,
+  "preparation_peak_mib": 1090.7080078125,
+  "after_allocated_mib": 1090.705078125,
+  "matrix_numel": 233373696,
+  "before_dtype": "torch.float16",
+  "after_dtype": "torch.float16",
+  "retained_hook_active": true,
+  "storage_pointer_unchanged": true,
+  "tied_after": true,
+  "embedding_output_hook": true,
+  "other_parameter_dtypes": [
+    "torch.float32",
+    "torch.uint8"
+  ]
+}

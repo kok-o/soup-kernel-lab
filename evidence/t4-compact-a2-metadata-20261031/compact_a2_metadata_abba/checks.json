@@ -1,0 +1,57 @@
+{
+  "result_sha256": "55a5463566b34b80273ac5bc9102a294295531039e5be540a297c6fbbf1e13b6",
+  "solution_sha256": "53d2057ac60abda2d7ec00a441c91d5b20bb9551973a874582cb1e12e98e338d",
+  "checks": [
+    {
+      "check": "1. every base and solution run finished",
+      "ok": true,
+      "detail": "2 base and 2 solution runs of 2 each"
+    },
+    {
+      "check": "2. no ready-made kernel libraries",
+      "ok": true,
+      "detail": "loaded: none; imported in solution/: none; packages changed during the run: none"
+    },
+    {
+      "check": "3. own @triton.jit kernels in solution/ run in training",
+      "ok": true,
+      "detail": "activation_pack_kernel (solution/_activation_kernels.py), activation_unpack_kernel (solution/_activation_kernels.py), ce_backward_kernel (solution/_ce_kernels.py), ce_merge_kernel (solution/_ce_kernels.py), ce_partition_kernel (solution/_ce_kernels.py), dropout_mask_gradient_kernel (solution/_dropout_kernels.py), dropout_mask_pack_kernel (solution/_dropout_kernels.py), fork_gradient_sum_kernel (solution/fork_sum.py), grouped_activation_pack4_kernel (solution/_grouped_activation_kernels.py), grouped_activation_unpack4_kernel (solution/_grouped_activation_kernels.py), lora_scale_add_kernel (solution/_lora_kernels.py), lora_scale_gradient_kernel (solution/_lora_kernels.py), rmsnorm_backward_kernel (solution/_rmsnorm_kernels.py), rmsnorm_forward_kernel (solution/_rmsnorm_kernels.py), rotary_backward_kernel (solution/_rope_kernels.py), rotary_forward_kernel (solution/_rope_kernels.py); not launched in every solution run: activation_pack4_kernel, activation_unpack4_kernel, grouped_activation_pack8_kernel, grouped_activation_unpack8_kernel, training_dtype_cast; the example's kernels do not count, under any name: example_swiglu_packed_bwd_kernel, example_swiglu_fwd_kernel, example_swiglu_bwd_kernel"
+    },
+    {
+      "check": "4. own kernels together take >= 5% of the training time",
+      "ok": true,
+      "detail": "10.0% of the training time (lowest of 2 runs, steps 3+)"
+    },
+    {
+      "check": "5. same task and Soup outputs (steps, adapter, settings, tokens, metrics, rewind)",
+      "ok": true,
+      "detail": "identical within tolerance"
+    },
+    {
+      "check": "6. loss curve follows the base",
+      "ok": true,
+      "detail": "base_2: first step 0.00%, mean of all steps 0.01%; solution_1: first step 0.02%, mean of all steps 0.17%; solution_2: first step 0.02%, mean of all steps 0.17% (max 1% and 3%)"
+    },
+    {
+      "check": "7. quality: eval loss at most 0.5% above the base",
+      "ok": true,
+      "detail": "+0.120%"
+    },
+    {
+      "check": "8. not worse than the base on time or memory (10% margin)",
+      "ok": true,
+      "detail": "time x0.717, memory x0.161 of the base"
+    },
+    {
+      "check": "9. clean measurement (a T4, idle GPUs, one GPU, harness allocator, peaks agree)",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "check": "10. Soup regression tests with your patches",
+      "ok": true,
+      "detail": "79 passed, 14 warnings in 0.36s"
+    }
+  ],
+  "notes": []
+}

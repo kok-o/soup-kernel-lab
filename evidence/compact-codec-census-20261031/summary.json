@@ -1,0 +1,55 @@
+{
+  "diagnostic_only": true,
+  "runtime_commit": "c369cc7986127330b9aedeba655757d322b64559",
+  "batches": 64,
+  "totals": {
+    "pack_requests": 74624,
+    "eligible_requests": 14080,
+    "same_packet_hits": 0,
+    "distinct_view_duplicates": 1728,
+    "possible_gpu_bytes": 1485151200,
+    "possible_host_bytes": 742575600
+  },
+  "peak_live_duplicate_gpu_packet_mib": 38.21388244628906,
+  "actual_varlen_compressed_saves": 0,
+  "first_duplicate": {
+    "batch": 0,
+    "layer": 1,
+    "shape": [
+      701,
+      1536
+    ],
+    "stride": [
+      1536,
+      1
+    ],
+    "storage_offset": 0,
+    "dtype": "torch.float32",
+    "version": 0,
+    "bits": 8,
+    "block": 256,
+    "placement": "host",
+    "packet_bytes": 1093560,
+    "same_tensor_object": false,
+    "consumer_scope": [
+      "base_model.model.model.layers.1.self_attn.v_proj"
+    ],
+    "producer": "ViewBackward0",
+    "stack": [
+      "module.py:_call_impl:1790",
+      "compact_decoder.py:attention_forward:133",
+      "rope_fusion.py:forward:119",
+      "modeling_qwen2.py:forward:208",
+      "module.py:_wrapped_call_impl:1779",
+      "module.py:_call_impl:1885",
+      "module.py:inner:1833",
+      "lora_fusion.py:forward:91",
+      "module.py:_wrapped_call_impl:1779",
+      "module.py:_call_impl:1790",
+      "compact_decoder.py:dropout_forward:166",
+      "research_codec_census.py:observe:60"
+    ]
+  },
+  "raw_json_sha256": "bccfbdf9917c0ba275636de6d8b29e5b7f0fb3ec1c6615f8c2f29b0fe0660f0a",
+  "gzip_sha256": "6a6ae5639892b0433191d2e9babcd89be35a1a6485e7b6d7e86d488f58f868fc"
+}

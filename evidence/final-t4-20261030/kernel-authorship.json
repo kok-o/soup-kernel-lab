@@ -1,0 +1,49 @@
+{
+  "kernels": [
+    {
+      "kernel": "activation_pack_kernel",
+      "example_likeness": 0.448632
+    },
+    {
+      "kernel": "activation_unpack_kernel",
+      "example_likeness": 0.606571
+    },
+    {
+      "kernel": "activation_pack4_kernel",
+      "example_likeness": 0.294688
+    },
+    {
+      "kernel": "activation_unpack4_kernel",
+      "example_likeness": 0.244656
+    },
+    {
+      "kernel": "ce_partition_kernel",
+      "example_likeness": 0.341362
+    },
+    {
+      "kernel": "ce_merge_kernel",
+      "example_likeness": 0.267642
+    },
+    {
+      "kernel": "ce_backward_kernel",
+      "example_likeness": 0.317192
+    },
+    {
+      "kernel": "rmsnorm_forward_kernel",
+      "example_likeness": 0.363319
+    },
+    {
+      "kernel": "rmsnorm_backward_kernel",
+      "example_likeness": 0.391532
+    },
+    {
+      "kernel": "training_dtype_cast",
+      "example_likeness": 0.656489
+    }
+  ],
+  "excluded_samples": [
+    "example_swiglu_fwd_kernel",
+    "example_swiglu_bwd_kernel"
+  ],
+  "manual_review_flags": []
+}

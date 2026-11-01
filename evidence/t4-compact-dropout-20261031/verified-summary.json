@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "346a3a56ce76453217c9b9431baa614e98d2f7acbd6f61b9c2ce55598a250827",
+  "manifest_files": 39,
+  "cases": [
+    {
+      "case": "runs_compact_dropout_abba",
+      "source_commit": "35ea24c796a35a93e8beca5943675fc4fae70d16",
+      "solution_sha256": "3172cf8b138a331262bb63a471a31f67e2936336bb78ca13fc5192ade6a46ce5",
+      "result_sha256": "59551a35b3405c822828a9084897a3ac7f87f073e88601c67065782091f75a0d",
+      "summary": {
+        "base": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 80.58,
+          "gpu_peak_mib": 14345,
+          "train_loop_s": 56.68,
+          "eval_loss": 2.04965
+        },
+        "solution": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 61.83,
+          "gpu_peak_mib": 2307,
+          "train_loop_s": 35.8,
+          "eval_loss": 2.05207
+        },
+        "ratios": {
+          "speedup": 1.3033,
+          "memory_ratio": 6.218,
+          "quality_delta_pct": 0.118
+        }
+      },
+      "official_checks": 10
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "2e2de1a59ccc5417a9f3e4eec3c96b6ab9e5e463726fedbfb9ceb1745bdc841a",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_nf4_stack_screen",
+      "source_commit": "b8c192fdbdea7a9a779f0f14783a616ca4f83a75",
+      "solution_sha256": "2b2de8426a4fc28d16f05fda3604a7e12330d9502dcc4d7c67c255b17d500556",
+      "result_sha256": "f876e4a1a37f517123e4723d69c23a643a63f617f4af6fa1b6a16630677f4fc7",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 69.15,
+          "gpu_peak_mib": 2799,
+          "train_loop_s": 45.34,
+          "eval_loss": 2.05198
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

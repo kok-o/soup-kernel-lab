@@ -1,0 +1,20 @@
+.................................ss..................................... [ 20%]
+........................................................................ [ 41%]
+...................................................F.................... [ 61%]
+........................................................................ [ 82%]
+..............................................................           [100%]
+=================================== FAILURES ===================================
+_____________ test_existence_short_circuit_preserves_missing_names _____________
+solution/test_metadata_exact.py:156: in test_existence_short_circuit_preserves_missing_names
+    assert len(calls) == 8
+E   AssertionError: assert 4 == 8
+E    +  where 4 = len([PosixPath('/tmp/pytest-of-ubuntu/pytest-8/test_existence_short_circuit_p0/present/absent.py'), PosixPath('/tmp/pytest...rt_circuit_p0/missing/0.py'), PosixPath('/tmp/pytest-of-ubuntu/pytest-8/test_existence_short_circuit_p0/missing/1.py')])
+=============================== warnings summary ===============================
+../.venv/lib/python3.13/site-packages/torch/jit/_script.py:365: 14 warnings
+  /home/ubuntu/workspace/soup-lab/.venv/lib/python3.13/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED solution/test_metadata_exact.py::test_existence_short_circuit_preserves_missing_names
+1 failed, 347 passed, 2 skipped, 14 warnings in 17.90s

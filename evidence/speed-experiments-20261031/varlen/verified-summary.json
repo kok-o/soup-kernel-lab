@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "f94738c9ecb66a9b5992ffe7b16560faedef1b6c2b069209b78bbf504b6ba441",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_varlen_screen",
+      "source_commit": "107b8dfce4a2c54312d5c281a4c1386d100b845a",
+      "solution_sha256": "d60e7642a704197cb23d2db5c31082934ec3bbbfac909f6f66dc727ff37ddf21",
+      "result_sha256": "eb91d297b7b84164634817d0d56531cc559ad0c4c61390a589515e727fcf9415",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 66.09,
+          "gpu_peak_mib": 2751,
+          "train_loop_s": 39.92,
+          "eval_loss": 2.05207
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

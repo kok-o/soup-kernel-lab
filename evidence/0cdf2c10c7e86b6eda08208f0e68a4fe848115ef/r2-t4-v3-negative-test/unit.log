@@ -1,0 +1,125 @@
+........................................................................ [ 77%]
+...............F.FFFF                                                    [100%]
+=================================== FAILURES ===================================
+_________________ test_actual_nf4_linear_values_and_gradients __________________
+solution/test_dtype_cast.py:50: in test_actual_nf4_linear_values_and_gradients
+    assert torch.equal(actual, reference)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   torch.AcceleratorError: CUDA error: misaligned address
+E   Search for `cudaErrorMisalignedAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+E   CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E   For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+E   Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+__________________ test_swiglu_matches_pytorch[shape0-dtype0] __________________
+solution/test_kernels.py:19: in test_swiglu_matches_pytorch
+    torch.manual_seed(0)
+/usr/local/lib/python3.13/dist-packages/torch/_compile.py:54: in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:42: in manual_seed
+    return _manual_seed_impl(seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:50: in _manual_seed_impl
+    torch.cuda.manual_seed_all(seed)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:128: in manual_seed_all
+    _lazy_call(cb, seed_all=True)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:409: in _lazy_call
+    callable()
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:126: in cb
+    default_generator.manual_seed(seed)
+E   torch.AcceleratorError: CUDA error: misaligned address
+E   Search for `cudaErrorMisalignedAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+E   CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E   For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+E   Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+__________________ test_swiglu_matches_pytorch[shape0-dtype1] __________________
+solution/test_kernels.py:19: in test_swiglu_matches_pytorch
+    torch.manual_seed(0)
+/usr/local/lib/python3.13/dist-packages/torch/_compile.py:54: in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:42: in manual_seed
+    return _manual_seed_impl(seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:50: in _manual_seed_impl
+    torch.cuda.manual_seed_all(seed)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:128: in manual_seed_all
+    _lazy_call(cb, seed_all=True)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:409: in _lazy_call
+    callable()
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:126: in cb
+    default_generator.manual_seed(seed)
+E   torch.AcceleratorError: CUDA error: misaligned address
+E   Search for `cudaErrorMisalignedAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+E   CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E   For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+E   Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+__________________ test_swiglu_matches_pytorch[shape1-dtype0] __________________
+solution/test_kernels.py:19: in test_swiglu_matches_pytorch
+    torch.manual_seed(0)
+/usr/local/lib/python3.13/dist-packages/torch/_compile.py:54: in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:42: in manual_seed
+    return _manual_seed_impl(seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:50: in _manual_seed_impl
+    torch.cuda.manual_seed_all(seed)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:128: in manual_seed_all
+    _lazy_call(cb, seed_all=True)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:409: in _lazy_call
+    callable()
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:126: in cb
+    default_generator.manual_seed(seed)
+E   torch.AcceleratorError: CUDA error: misaligned address
+E   Search for `cudaErrorMisalignedAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+E   CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E   For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+E   Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+__________________ test_swiglu_matches_pytorch[shape1-dtype1] __________________
+solution/test_kernels.py:19: in test_swiglu_matches_pytorch
+    torch.manual_seed(0)
+/usr/local/lib/python3.13/dist-packages/torch/_compile.py:54: in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:42: in manual_seed
+    return _manual_seed_impl(seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.13/dist-packages/torch/random.py:50: in _manual_seed_impl
+    torch.cuda.manual_seed_all(seed)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:128: in manual_seed_all
+    _lazy_call(cb, seed_all=True)
+/usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:409: in _lazy_call
+    callable()
+/usr/local/lib/python3.13/dist-packages/torch/cuda/random.py:126: in cb
+    default_generator.manual_seed(seed)
+E   torch.AcceleratorError: CUDA error: misaligned address
+E   Search for `cudaErrorMisalignedAddress' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+E   CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E   For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+E   Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+=============================== warnings summary ===============================
+solution/test_ce_patch.py: 14 warnings
+  /usr/local/lib/python3.13/dist-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED solution/test_dtype_cast.py::test_actual_nf4_linear_values_and_gradients
+FAILED solution/test_kernels.py::test_swiglu_matches_pytorch[shape0-dtype0]
+FAILED solution/test_kernels.py::test_swiglu_matches_pytorch[shape0-dtype1]
+FAILED solution/test_kernels.py::test_swiglu_matches_pytorch[shape1-dtype0]
+FAILED solution/test_kernels.py::test_swiglu_matches_pytorch[shape1-dtype1]
+5 failed, 88 passed, 14 warnings in 58.54s

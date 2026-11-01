@@ -1,0 +1,53 @@
+{
+  "archive_sha256": "85536eeb421e4cf7c12abbe4ce5224b2929dc91b981f76603091e8efc1a59934",
+  "manifest_files": 58,
+  "cases": [
+    {
+      "case": "runs_grouped_codec_abba",
+      "source_commit": "f3e31dade22161893dd9837428a3d8b827634160",
+      "solution_sha256": "c7d3c4d7a89ea19ba2718b18e25b971c5de2ece613c645327b4a9174c29c0b6a",
+      "result_sha256": "0f596dc3f1cea33687a021ceeeab6c11dabd5d27ebc8d9207545ed4bbbbafb5d",
+      "summary": {
+        "base": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 80.38,
+          "gpu_peak_mib": 14345,
+          "train_loop_s": 57.23,
+          "eval_loss": 2.04968
+        },
+        "solution": {
+          "ok": true,
+          "runs": 2,
+          "wall_s": 69.42,
+          "gpu_peak_mib": 3469,
+          "train_loop_s": 46.06,
+          "eval_loss": 2.05213
+        },
+        "ratios": {
+          "speedup": 1.1579,
+          "memory_ratio": 4.1352,
+          "quality_delta_pct": 0.12
+        }
+      },
+      "official_checks": 10
+    },
+    {
+      "case": "runs_prefetch_v2_screen",
+      "source_commit": null,
+      "solution_sha256": "059229299f1231fb42add8bd30f1f24142d8a34b36bab04921d1783ae67202b3",
+      "result_sha256": "04e13a4098acd63cd12343a6e0c49c1ccf5f95e4426bb5e3e137f2bf3858b77e",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 71.51,
+          "gpu_peak_mib": 2779,
+          "train_loop_s": 47.31,
+          "eval_loss": 2.05207
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

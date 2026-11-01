@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "fa6fbd53003a039712cdfee64ace256b6e4ebde92f752a427421d7f67c4309f9",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_packed_swiglu_screen",
+      "source_commit": "62d0d89",
+      "solution_sha256": "03c1d2a4241661c58e6ceba6c6922cd2f01affa785b299359b71c1127a60e4a0",
+      "result_sha256": "3fac908ba3d5d672039e098e482dd40c154eab3302cb76332b411ba19f26886b",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 66.99,
+          "gpu_peak_mib": 2799,
+          "train_loop_s": 43.34,
+          "eval_loss": 2.05217
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

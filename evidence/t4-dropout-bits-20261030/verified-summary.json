@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "5fbf8f549b109e5335358b3771cbdbd37dfe676fc3635262a0bf359d6296bb92",
+  "manifest_files": 23,
+  "cases": [
+    {
+      "case": "runs_dropout_bits_screen",
+      "source_commit": "621a702fb15d25d899b8b645c2afe9297bfb1c7e",
+      "solution_sha256": "a0653d8f82e912f7eac8f2a835f46417df66238de5d3ae24da273f47a8d6faee",
+      "result_sha256": "851838370a11995df212a16773c074273f6644bd9884f3f391fa8f8c73e3d6c9",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 67.89,
+          "gpu_peak_mib": 2879,
+          "train_loop_s": 44.62,
+          "eval_loss": 2.05213
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

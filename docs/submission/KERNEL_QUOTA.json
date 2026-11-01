@@ -1,0 +1,93 @@
+[
+  {
+    "kernel": "_hosthead_row_stats",
+    "file": "solution/hosthead_stats.py",
+    "operation": "FP32 streamed vocabulary row statistics for CE, entropy, accuracy and dHidden",
+    "solution_1_pct": 0.441169199651656,
+    "solution_2_pct": 0.44082607006051183
+  },
+  {
+    "kernel": "activation_pack_kernel",
+    "file": "solution/_activation_kernels.py",
+    "operation": "INT8/256 saved activation encoding",
+    "solution_1_pct": 0.9356097423940218,
+    "solution_2_pct": 0.933178815300061
+  },
+  {
+    "kernel": "activation_unpack_kernel",
+    "file": "solution/_activation_kernels.py",
+    "operation": "INT8/256 saved activation reconstruction",
+    "solution_1_pct": 0.7690676180577014,
+    "solution_2_pct": 0.7527702215066895
+  },
+  {
+    "kernel": "dropout_mask_gradient_kernel",
+    "file": "solution/_dropout_kernels.py",
+    "operation": "Original dropout gradient from the packed native mask",
+    "solution_1_pct": 0.6592409472708374,
+    "solution_2_pct": 0.6497418531060899
+  },
+  {
+    "kernel": "dropout_mask_pack_kernel",
+    "file": "solution/_dropout_kernels.py",
+    "operation": "Pack original native dropout mask; preserve RNG consumption",
+    "solution_1_pct": 0.2612158327948984,
+    "solution_2_pct": 0.2671209681896408
+  },
+  {
+    "kernel": "fork_gradient_sum_kernel",
+    "file": "solution/fork_sum.py",
+    "operation": "Widen independently rounded gate/up gradients before FP32 addition",
+    "solution_1_pct": 0.26464308790066576,
+    "solution_2_pct": 0.26463942708044186
+  },
+  {
+    "kernel": "grouped_activation_pack4_kernel",
+    "file": "solution/_grouped_activation_kernels.py",
+    "operation": "INT4/64 wide MLP saved activation encoding",
+    "solution_1_pct": 1.50336826137034,
+    "solution_2_pct": 1.543005051906956
+  },
+  {
+    "kernel": "lora_scale_add_kernel",
+    "file": "solution/_lora_kernels.py",
+    "operation": "Preserve LoRA FP16 scale and FP32 output addition",
+    "solution_1_pct": 0.689591819535354,
+    "solution_2_pct": 0.6669322156220506
+  },
+  {
+    "kernel": "lora_scale_gradient_kernel",
+    "file": "solution/_lora_kernels.py",
+    "operation": "Original LoRA scaled backward rounding",
+    "solution_1_pct": 0.37231789195718734,
+    "solution_2_pct": 0.3717204241381224
+  },
+  {
+    "kernel": "rmsnorm_backward_kernel",
+    "file": "solution/_rmsnorm_kernels.py",
+    "operation": "Frozen-weight FP32 RMSNorm input gradient",
+    "solution_1_pct": 0.7342837879596594,
+    "solution_2_pct": 0.7238355632043524
+  },
+  {
+    "kernel": "rmsnorm_forward_kernel",
+    "file": "solution/_rmsnorm_kernels.py",
+    "operation": "Frozen-weight FP32 RMSNorm forward",
+    "solution_1_pct": 0.6607073629800264,
+    "solution_2_pct": 0.6605257314161994
+  },
+  {
+    "kernel": "rotary_backward_kernel",
+    "file": "solution/_rope_kernels.py",
+    "operation": "Original FP32 RoPE input gradient",
+    "solution_1_pct": 0.35421243363204763,
+    "solution_2_pct": 0.3532920668406151
+  },
+  {
+    "kernel": "rotary_forward_kernel",
+    "file": "solution/_rope_kernels.py",
+    "operation": "Original RoPE formula and query FP16 cast boundary",
+    "solution_1_pct": 0.6829873303930105,
+    "solution_2_pct": 0.6715511019819018
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "9eafdf252d8ff5b8950d46939307f55734dd50f2e7d1c02d73544f9aaf4f2a9e",
+  "manifest_files": 23,
+  "cases": [
+    {
+      "case": "runs_launcher_preload_screen",
+      "source_commit": "74685e738506dbd852551488c8b44c8d5b867fc6",
+      "solution_sha256": "0c6b8266a7c9558ff8de9bb668fd761de1837b7a8480e6731dd9cf3d742a525f",
+      "result_sha256": "2638cbcd4de83adcdeb0f93107424ebc1a73e4da7ff0d7ce86c936853fc69961",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 63.39,
+          "gpu_peak_mib": 2827,
+          "train_loop_s": 37.25,
+          "eval_loss": 2.05203
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

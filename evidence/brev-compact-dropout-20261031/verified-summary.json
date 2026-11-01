@@ -1,0 +1,48 @@
+{
+  "platform": "Brev, not Kaggle",
+  "created_utc": "2026-10-30T22:04:12.830559+00:00",
+  "cases": [
+    {
+      "case": "runs_brev_dropout10",
+      "source": {
+        "code_commit": "35ea24c796a35a93e8beca5943675fc4fae70d16",
+        "solution_sha256": "3172cf8b138a331262bb63a471a31f67e2936336bb78ca13fc5192ade6a46ce5",
+        "result_sha256": "7f557a367a4fee6321c7a5ca888ea988305f866d1c46845c6461a9c4cdf756fb",
+        "platform": "Brev dedicated Tesla T4",
+        "official_kaggle_qualification": false,
+        "measurement": "unchanged official run_task.py --only solution; full cold train timed from parent; eval separate; new compiler caches"
+      },
+      "summary": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 47.81,
+        "gpu_peak_mib": 2307,
+        "train_loop_s": 32.41,
+        "eval_loss": 2.05208
+      }
+    },
+    {
+      "case": "runs_brev_dropout14",
+      "source": {
+        "code_commit": "c7ccd89064e042af74ae09432a192aa574e6be09",
+        "solution_sha256": "83ab3e6f07d9f140251f9ff141677c7cc949a344b8b1c45b251ce475a021f35c",
+        "result_sha256": "04b71089fbd0693a854526fe3b37908f668f6804a9e75da0da85b1f77ced06fb",
+        "platform": "Brev dedicated Tesla T4",
+        "official_kaggle_qualification": false,
+        "measurement": "unchanged official run_task.py --only solution; full cold train timed from parent; eval separate; new compiler caches"
+      },
+      "summary": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 49.31,
+        "gpu_peak_mib": 2207,
+        "train_loop_s": 33.89,
+        "eval_loss": 2.05207
+      }
+    }
+  ],
+  "archive_sha256": "c6d885060b41ba713066f14596ced961bfdf08ddfcd6116de43eea00c455d2ad",
+  "manifest_files": 23,
+  "all_source_files_match_git": true,
+  "result_bindings_verified": true
+}

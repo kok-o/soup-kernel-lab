@@ -1,0 +1,75 @@
+{
+  "id": "slotviews-652",
+  "source": "652334f3c63764d8ca998ef3c9ae1c378465cf63",
+  "raw": "reports/root_resume_20261031_1711/kaggle_slotviews_652/fullstate-fingerprint-raw-evidence.zip",
+  "raw_sha256": "f9f33be19b21c093fa74855e38e4c898ecd87d589955ac5ab9ddbab7ff531b7e",
+  "package": "reports/root_resume_20261031_1711/slotviews_package",
+  "evidence_commit": "5d10568bd847d2586bb67ad01852e77a28b4d6fd",
+  "evidence_path": "evidence/kaggle-slotviews-20261031",
+  "evidence_status": "Final human-selected Kaggle 61.40 s /729 MiB; source and all 10 original checks verified.",
+  "pr": 32,
+  "tests": "370 passed, 2 original skips",
+  "implementation": "Frozen NF4 projections and their complete nested quantization state stay in pinned host memory. Two fixed GPU U8 slabs receive the requested weight bytes on every lease, protected by ready/last-reader events and a host version check.\n\nFor each weight and slot, a bounded cache reuses QuantState metadata and typed Tensor views of that same slab. Each slot keeps at most512entries. This removes repeated Python/Tensor view construction while keeping the same two GPU storage buffers and the original native bitsandbytes math. Once full, the cache builds a view without retaining another entry.\n\nSaved activations from the first20decoder layers are offloaded; eight late layers remain resident. The frozen vocabulary head streams through its own bounded buffers. The full Kaggle suite includes the new native NF4 forward/input-gradient parity test at scales1/1024/65536, repeated slot reuse, exact two-slab aliasing and rejection of a modified nested host state.",
+  "brev": "No Brev training run was executed for this source; this qualification was run directly on Kaggle. Separate 304 or d070 Brev timings are not transferred.",
+  "selected_by_coordinator": true,
+  "saved_version_url": "https://www.kaggle.com/code/koko667/setww-final-slotviews?scriptVersionId=364323222",
+  "public_saved_verified_by": "Coordinator Root selected and saved Share Public version364323222 inKaggleUI on2026-10-31. Independent anonymous access NOTverified; originalpackage metadata predates publication.",
+  "anonymous_access_independently_verified": false,
+  "final_selected_by_human": true,
+  "native_proof_warning": "One native alignment-fallback warning at inner dimension96 in the varied-shape GPU parity test; actualtestpassed. Officialtraining andall10passed.",
+  "notebook_url": "https://www.kaggle.com/code/koko667/setww-final-slotviews",
+  "notebook_metadata_is_private": "true",
+  "summary": {
+    "base": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 84.34,
+      "gpu_peak_mib": 14345,
+      "train_loop_s": 57.44,
+      "eval_loss": 2.04965
+    },
+    "solution": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 61.4,
+      "gpu_peak_mib": 729,
+      "train_loop_s": 38.33,
+      "eval_loss": 2.05214
+    },
+    "ratios": {
+      "speedup": 1.3736,
+      "memory_ratio": 19.6776,
+      "quality_delta_pct": 0.121
+    }
+  },
+  "versions": {
+    "python": "3.13.15",
+    "soup-cli": "0.77.0",
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "trl": "0.29.1",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.14.0",
+    "datasets": "4.8.5",
+    "gpus": [
+      "Tesla T4, 580.178.04",
+      "Tesla T4, 580.178.04"
+    ]
+  },
+  "official_files_verified": 15,
+  "manifest_entries_verified": 139,
+  "source_files_verified": 96,
+  "solution_sha256": "3b8e9eff479025995004eb34dab2db10f27fcd3f440f015021f8af3db1a78f6a",
+  "result_sha256": "c9de1ac92e8e91457dd0a73febb775a43b92d903fdc8c3a714cb9aa6445b99fd",
+  "measured_own_share_pct": [
+    8.328415315897406,
+    8.299139510353633
+  ],
+  "check4": "8.3% of the training time (lowest of 2 runs, steps 3+)",
+  "evidence_url": "https://github.com/BAITC-Hacks/hack-3ef0581f-setww/tree/5d10568bd847d2586bb67ad01852e77a28b4d6fd/evidence/kaggle-slotviews-20261031",
+  "measured_runtime_commit": "652334f3c63764d8ca998ef3c9ae1c378465cf63",
+  "documentation_wrapper_commit": "5d10568bd847d2586bb67ad01852e77a28b4d6fd",
+  "status": "FINAL_SELECTED_QUALIFIED_RUNTIME"
+}

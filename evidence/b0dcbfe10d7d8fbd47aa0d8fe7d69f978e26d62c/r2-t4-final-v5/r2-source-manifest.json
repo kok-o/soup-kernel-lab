@@ -1,0 +1,32 @@
+{
+  "commit": "b0dcbfe10d7d8fbd47aa0d8fe7d69f978e26d62c",
+  "files": {
+    "harness/_train.py": "45a62642dceab32cf3efcda504de87a9c25ea28b119b1806f56d14ff1146a89d",
+    "harness/check_rules.py": "879ab1861674f6e714eadd00aaf044235d98526dd75fab1035deec3401121ef5",
+    "harness/common.py": "c83066f24f266dab62ebcc9c2d44f5a65902760b53da912e65ebfe511579c2db",
+    "harness/eval_adapter.py": "47cddbb8e4579c69f9535b099ff2371b1c3af08bfbd93d14bf79aadd74d38482",
+    "harness/example_reference.py": "6a11055f4a1822e53971c228c6e3e3aa6b88edd9eb6db81a388e26a70a030ceb",
+    "harness/run_task.py": "d935a8959f348977313f2eef36870ff2699b9ba013a7978918ff35e148968a79",
+    "harness/score.py": "731c9b644dcc4069b0b069616f438064d1f7f376a202feb15201fd910ec688c5",
+    "solution/__init__.py": "72dadd589875ccb5beaf9543e0fd1955290456993d1220fe608cef6618ce86a5",
+    "solution/_ce_kernels.py": "ecc328c127fcd9317c92b79fe95fb4e97274a287457a043019ed7356b7e10b48",
+    "solution/ce.py": "02b8ed775215f580ce06929b9c46eb77f33fa2a7a05fa9f7bec359fac81b0d43",
+    "solution/ce_patch.py": "b19133dd4c2d0c06d1d4d3047fffa7347cb7ceb600ecfb3d924ca17c2215b301",
+    "solution/chunked_head.py": "6315b1a81d78af62410cda28d411620cf9ef0c18346eb4f85175a9106721bb13",
+    "solution/dtype_cast.py": "4de7fc7b923391da1515ff2471c9e9bffd468c0bcf9d15a67b8e1274f1cea183",
+    "solution/swiglu.py": "e665910faeca6091c958ed7a191604484a44216f51d6fa069f5f48220e7472e6",
+    "solution/test_ce.py": "53b3ec14a4aa989d44f6de097a535ac7cd084461188db5c975300ce26ec19580",
+    "solution/test_ce_patch.py": "192af8b060a1ea3ace05f5998f136020a5208a7b85fdf799383f3ef7a6208416",
+    "solution/test_chunked_head.py": "98741beaf183dce39031660d0937cb105343508ff65a885378499ccf75a7767c",
+    "solution/test_dtype_cast.py": "edf8013db65cfd4ac96b0fc25037ed0d0b0daa5e028955bf7092a7559c2e2d80",
+    "solution/test_kernels.py": "a45b842a4f22c1aefe404baeff1ac26511253452ecb0f633c985fbc9df8b252a",
+    "task/prepare_data.py": "a8543f11a55aff80dbdc714a0e62391244a5296616eea2e34dc2eb3ff3ec18f7",
+    "task/task.yaml": "dd70c739fcd143e06aef3bb1efcc9386f682bf1de26f30e08409d86a97ff47ce",
+    "tests/conftest.py": "a82eabab468ea0ef1e003cccd7c3827ce2f4d00d09c32948a34fb48221f7337a",
+    "tests/test_callback.py": "1919303a3670c0a33abbfce9b33eab0913bb64a3a21c3312d86531c32b5bf490",
+    "tests/test_config.py": "db808c44470d144b7cf18b7329492f41f76e37cfc24306e7cba0488bca9d787c",
+    "tests/test_formats.py": "5d656ed50c59f794e934473d459ea85635f892ba028e192414474e9b5d65919e",
+    "tests/test_loader.py": "3dad1bea2d33aab97e52b7cd44888d768bc9519af44fbe6cf3e96c260026632f",
+    "tests/test_trainer_init.py": "b7608d62a40983bf7c9e5b270e0e527b641a837e462d6df2909fec88f607e821"
+  }
+}

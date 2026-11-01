@@ -1,0 +1,2056 @@
+{
+  "diagnostic_only": true,
+  "solution_sha256": "a097465a1edeb0c8ad862378c55f1a59f9d5652dcf43329dff46794c6ab731ba",
+  "slow_jit_calls": [
+    {
+      "name": "rmsnorm_forward_kernel",
+      "elapsed_s": 0.27591356100128905,
+      "arguments": [
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        1536,
+        1e-06,
+        2048
+      ],
+      "launch": {
+        "warmup": false,
+        "num_warps": 4,
+        "enable_fp_fusion": false
+      }
+    },
+    {
+      "name": "training_dtype_cast",
+      "elapsed_s": 0.25347153400070965,
+      "arguments": [
+        "torch.float32",
+        "torch.float16",
+        1443840
+      ],
+      "launch": {
+        "warmup": false,
+        "block": 4096
+      }
+    },
+    {
+      "name": "lora_scale_add_kernel",
+      "elapsed_s": 0.27514999999948486,
+      "arguments": [
+        "torch.float32",
+        "torch.float16",
+        "torch.float32",
+        1443840
+      ],
+      "launch": {
+        "warmup": false,
+        "scale": 2.0,
+        "block": 1024,
+        "num_warps": 4,
+        "enable_fp_fusion": false
+      }
+    },
+    {
+      "name": "rotary_forward_kernel",
+      "elapsed_s": 0.30823248700107797,
+      "arguments": [
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.float16",
+        120320,
+        235,
+        360960,
+        128,
+        1536,
+        360960,
+        128,
+        1536,
+        0,
+        128
+      ],
+      "launch": {
+        "warmup": false,
+        "block": 512,
+        "num_warps": 4,
+        "enable_fp_fusion": false
+      }
+    },
+    {
+      "name": "activation_pack_kernel",
+      "elapsed_s": 0.2915035000005446,
+      "arguments": [
+        "torch.float32",
+        "torch.int8",
+        "torch.float32",
+        1443840
+      ],
+      "launch": {
+        "warmup": false,
+        "block": 256,
+        "num_warps": 4
+      }
+    },
+    {
+      "name": "ce_partition_kernel",
+      "elapsed_s": 0.2958822179989511,
+      "arguments": [
+        "torch.float16",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.int32",
+        392,
+        151936,
+        59558912,
+        151936,
+        1,
+        38
+      ],
+      "launch": {
+        "warmup": false,
+        "block_size": 4096,
+        "num_warps": 4
+      }
+    },
+    {
+      "name": "ce_merge_kernel",
+      "elapsed_s": 0.35235010300129943,
+      "arguments": [
+        "torch.float16",
+        "torch.int64",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.int32",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.bool",
+        392,
+        151936,
+        59558912,
+        151936,
+        1,
+        392,
+        1,
+        38,
+        -100,
+        0
+      ],
+      "launch": {
+        "warmup": false,
+        "merge_block": 64,
+        "num_warps": 4
+      }
+    },
+    {
+      "name": "ce_backward_kernel",
+      "elapsed_s": 0.29707770500135666,
+      "arguments": [
+        "torch.float16",
+        "torch.int64",
+        "torch.float32",
+        "torch.float32",
+        "torch.float16",
+        392,
+        151936,
+        59558912,
+        151936,
+        1,
+        392,
+        1,
+        0,
+        0,
+        -100,
+        0
+      ],
+      "launch": {
+        "warmup": false,
+        "block_size": 4096,
+        "num_warps": 4
+      }
+    },
+    {
+      "name": "rmsnorm_backward_kernel",
+      "elapsed_s": 0.29070889400099986,
+      "arguments": [
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        "torch.float32",
+        1536,
+        2048
+      ],
+      "launch": {
+        "warmup": false,
+        "num_warps": 4,
+        "enable_fp_fusion": false
+      }
+    },
+    {
+      "name": "example_swiglu_packed_bwd_kernel",
+      "elapsed_s": 0.3234447150007327,
+      "arguments": [
+        "torch.float16",
+        "torch.uint8",
+        "torch.float32",
+        "torch.uint8",
+        "torch.float32",
+        "torch.float16",
+        "torch.float16",
+        6280960
+      ],
+      "launch": {
+        "warmup": false,
+        "block": 1024,
+        "num_warps": 4
+      }
+    },
+    {
+      "name": "lora_scale_gradient_kernel",
+      "elapsed_s": 0.2504263670016371,
+      "arguments": [
+        "torch.float32",
+        "torch.float16",
+        240640
+      ],
+      "launch": {
+        "warmup": false,
+        "scale": 2.0,
+        "block": 1024,
+        "num_warps": 4,
+        "enable_fp_fusion": false
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "apply_begin",
+      "elapsed_s": 5.38404
+    },
+    {
+      "phase": "apply_end",
+      "elapsed_s": 13.59022
+    },
+    {
+      "phase": "model_load_begin",
+      "elapsed_s": 14.63501
+    },
+    {
+      "phase": "model_load_end",
+      "elapsed_s": 18.62739
+    },
+    {
+      "phase": "trainer_init_begin",
+      "elapsed_s": 22.04143
+    },
+    {
+      "phase": "trainer_init_end",
+      "elapsed_s": 22.0499
+    },
+    {
+      "phase": "train_begin",
+      "elapsed_s": 22.53667
+    },
+    {
+      "phase": "step_begin",
+      "elapsed_s": 22.56956,
+      "step": 0
+    },
+    {
+      "phase": "jit_join_begin",
+      "elapsed_s": 22.69097
+    },
+    {
+      "phase": "jit_join_end",
+      "elapsed_s": 22.69144
+    },
+    {
+      "phase": "step_end",
+      "elapsed_s": 26.8888,
+      "step": 1
+    },
+    {
+      "phase": "step_begin",
+      "elapsed_s": 26.90007,
+      "step": 1
+    },
+    {
+      "phase": "step_end",
+      "elapsed_s": 27.35236,
+      "step": 2
+    },
+    {
+      "phase": "save_model_begin",
+      "elapsed_s": 64.48827
+    },
+    {
+      "phase": "save_adapter_begin",
+      "elapsed_s": 64.48837
+    },
+    {
+      "phase": "save_adapter_end",
+      "elapsed_s": 64.55794
+    },
+    {
+      "phase": "save_model_end",
+      "elapsed_s": 64.68252
+    },
+    {
+      "phase": "train_end",
+      "elapsed_s": 64.73401
+    },
+    {
+      "phase": "save_model_begin",
+      "elapsed_s": 64.7505
+    },
+    {
+      "phase": "save_adapter_begin",
+      "elapsed_s": 64.7506
+    },
+    {
+      "phase": "save_adapter_end",
+      "elapsed_s": 64.80488
+    },
+    {
+      "phase": "save_model_end",
+      "elapsed_s": 64.91684
+    },
+    {
+      "phase": "process_end",
+      "elapsed_s": 65.28663
+    }
+  ],
+  "dispatches": [
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 354,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 354,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 371,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 371,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 393,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 393,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 404,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 404,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 412,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 412,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 425,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 425,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 451,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 451,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 456,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 456,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 483,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 483,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 524,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 524,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 532,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 532,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 542,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 542,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 552,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 552,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 561,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 561,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 579,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 579,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 588,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 588,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 596,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 596,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 603,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 603,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 604,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 604,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 606,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 606,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 618,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 618,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 621,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 621,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 658,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 658,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 667,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 667,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 673,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 673,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 682,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 682,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 684,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 684,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 693,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 693,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 701,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 701,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 706,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 706,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 709,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 709,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 711,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 711,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 723,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 723,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 732,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 732,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 736,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 736,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 757,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 757,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 767,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 767,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 775,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 775,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 780,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 780,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 784,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 784,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 811,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 811,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 820,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 820,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 832,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 832,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 838,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 838,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 841,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 841,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 850,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 850,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 853,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 853,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 856,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 856,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 860,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 860,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 865,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 865,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 872,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 872,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 874,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 874,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 893,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 893,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 896,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 896,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 923,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 923,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 940,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 940,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 943,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 943,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 948,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 948,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 988,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 988,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1036,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1036,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1045,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1045,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1051,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1051,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1062,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1062,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1067,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1067,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1073,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1073,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1108,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1108,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1116,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1116,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1168,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1168,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1175,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1175,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1180,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1180,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1214,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1214,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1248,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1248,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1252,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1252,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1256,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1256,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1264,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1264,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1268,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1268,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1282,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1282,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1296,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1296,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1320,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1320,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1324,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1324,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1325,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1325,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1336,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1336,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1363,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1363,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1375,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1375,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1376,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1376,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1381,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1381,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1394,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1394,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1427,
+      "N": 1536,
+      "K": 8960,
+      "dtype": "torch.float16",
+      "calls": 28
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1427,
+      "N": 8960,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1440,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1440,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1484,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1484,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1500,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1500,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1516,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1516,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1520,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1520,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1524,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1524,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1528,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1528,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1568,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1568,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1624,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1624,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1640,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1640,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1696,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1696,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1720,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1720,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1724,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1724,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1828,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1828,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 112
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1860,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1860,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1916,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1916,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1940,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1940,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1948,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 1948,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 2036,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 2036,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 56
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 2048,
+      "N": 256,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 672
+    },
+    {
+      "path": "_dequant_linear_fallback",
+      "M": 2048,
+      "N": 1536,
+      "K": 1536,
+      "dtype": "torch.float16",
+      "calls": 672
+    }
+  ]
+}

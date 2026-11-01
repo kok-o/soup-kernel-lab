@@ -1,0 +1,14 @@
+{
+  "selected_chunk": 256,
+  "selected_source_commit": "b0dcbfe10d7d8fbd47aa0d8fe7d69f978e26d62c",
+  "prior128": {
+    "speedup": 1.0672,
+    "memory_ratio": 1.7273
+  },
+  "current256": {
+    "speedup": 1.1148,
+    "memory_ratio": 1.6986,
+    "quality_delta_pct": -0.001
+  },
+  "rule": "Among admitted pilots compare illustrative score proxy with best speed 1.5 and best memory 2; final ABBA confirms selected candidate. Proxy is not contest score."
+}

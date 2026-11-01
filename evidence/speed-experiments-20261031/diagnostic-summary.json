@@ -1,0 +1,8 @@
+{
+  "diagnostic_only": true,
+  "preparation_peak_delta_mib": 889.970703125,
+  "before_first_step_s": 4.319240000000001,
+  "preloaded_first_step_s": 1.007439999999999,
+  "before_slow_jit_s": 3.214161084008083,
+  "preloaded_slow_jit_s": 0
+}

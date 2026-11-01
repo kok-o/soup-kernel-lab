@@ -1,0 +1,115 @@
+{
+  "padding_fraction": 0.42420745514718694,
+  "groups_gpu_pct": {
+    "gemm": 36.781,
+    "attention": 9.669,
+    "NF4_dequant": 7.297,
+    "other": 26.801,
+    "dtype_cast": 5.147,
+    "codec": 11.698,
+    "rmsnorm": 2.102,
+    "CE": 0.505
+  },
+  "top_kernels": [
+    {
+      "name": "turing_fp16_s1688gemm_fp16_256x128_ldg8_f2f_stages_32x1_nn",
+      "time_us": 841739.7549999919,
+      "count": 1651
+    },
+    {
+      "name": "turing_fp16_s1688gemm_fp16_128x128_ldg8_f2f_tn",
+      "time_us": 730425.0529999919,
+      "count": 1316
+    },
+    {
+      "name": "fmha_cutlassB_f16_aligned_128x64_k128_sm75(PyTorchMemEffAttention::AttentionBackwardKernel<cutlass::arch::Sm75, cutlass::half_t, true, false, false, 128, 64, 128, false>::Params)",
+      "time_us": 556357.8000000056,
+      "count": 448
+    },
+    {
+      "name": "void kDequantizeBlockwise<__half, 512, 64, 8, 2>(float*, unsigned char*, float*, __half*, int, int)",
+      "time_us": 537125.1420000162,
+      "count": 6224
+    },
+    {
+      "name": "void at::native::vectorized_elementwise_kernel<4, at::native::CUDAFunctor_add<float>, std::array<char*, 3ul> >(int, at::native::CUDAFunctor_add<float>, std::array<char*, 3ul>)",
+      "time_us": 415368.6670000114,
+      "count": 4886
+    },
+    {
+      "name": "training_dtype_cast",
+      "time_us": 400742.58600005467,
+      "count": 7520
+    },
+    {
+      "name": "activation_pack4_kernel",
+      "time_us": 394736.27999999677,
+      "count": 896
+    },
+    {
+      "name": "turing_fp16_s1688gemm_fp16_256x128_ldg8_f2f_tn",
+      "time_us": 385878.77499999886,
+      "count": 285
+    },
+    {
+      "name": "activation_unpack4_kernel",
+      "time_us": 320308.86899997765,
+      "count": 896
+    },
+    {
+      "name": "turing_fp16_s1688gemm_fp16_128x256_ldg8_f2f_stages_32x1_nn",
+      "time_us": 258600.81800000783,
+      "count": 392
+    },
+    {
+      "name": "fmha_cutlassF_f16_aligned_32x128_rf_sm75(PyTorchMemEffAttention::AttentionKernel<cutlass::half_t, cutlass::arch::Sm75, true, 32, 128, 128, true, true>::Params)",
+      "time_us": 196401.25200000152,
+      "count": 448
+    },
+    {
+      "name": "turing_fp16_s1688gemm_fp16_128x128_ldg8_f2f_nn",
+      "time_us": 188159.23000000452,
+      "count": 470
+    },
+    {
+      "name": "void at::native::vectorized_elementwise_kernel<4, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)",
+      "time_us": 177846.65199998365,
+      "count": 5414
+    },
+    {
+      "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<float, float, float, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+      "time_us": 163082.66000005289,
+      "count": 3552
+    },
+    {
+      "name": "void at::native::unrolled_elementwise_kernel<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1> >(int, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}, std::array<char*, 2ul>, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, at::native::memory::LoadWithCast<1>, at::native::memory::StoreWithCast<1>)",
+      "time_us": 156531.51899998874,
+      "count": 4086
+    },
+    {
+      "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int)#1})",
+      "time_us": 135974.91300000844,
+      "count": 3984
+    },
+    {
+      "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1})",
+      "time_us": 130282.81699997382,
+      "count": 7568
+    },
+    {
+      "name": "example_swiglu_bwd_kernel",
+      "time_us": 128418.52199998556,
+      "count": 448
+    },
+    {
+      "name": "turing_fp16_s1688gemm_fp16_128x256_ldg8_f2f_stages_32x1_tn",
+      "time_us": 106645.45499999844,
+      "count": 196
+    },
+    {
+      "name": "activation_pack_kernel",
+      "time_us": 102641.13599999328,
+      "count": 2208
+    }
+  ]
+}

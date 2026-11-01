@@ -1,0 +1,6 @@
+{
+  "base_commit": "bef6d7a99779593bcd80d43df013ce34561d55b9",
+  "prototype": "bounded-D2H8-prefetch2-all-layers",
+  "solution_sha256": "059229299f1231fb42add8bd30f1f24142d8a34b36bab04921d1783ae67202b3",
+  "result_sha256": "04e13a4098acd63cd12343a6e0c49c1ccf5f95e4426bb5e3e137f2bf3858b77e"
+}

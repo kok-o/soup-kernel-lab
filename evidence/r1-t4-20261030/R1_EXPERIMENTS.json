@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-30",
+  "notebook": "https://www.kaggle.com/code/koko667/setww-r1-ce-metrics-t4",
+  "v1_commit": "00d00d6b678548851b4725c390bbd91152f411a3",
+  "v2_commit": "2e2a4b5fce8f1c047dcbf95fedbe27db452dbf95",
+  "v1_abba_status": "9/10, check 8 failed: time x1.139",
+  "v2_pilot_status": "9/10, check 4 failed: own kernels 0.9%",
+  "limitations": "Memory gain includes starter SwiGLU; V2 speed gain is below 5%; neither version is qualified alone."
+}

@@ -1,0 +1,21 @@
+{
+  "code_commit": "a017d6fea308e7c250323ad70f44af34ef9e3d93",
+  "solution_sha256": "68cab873fca0c754556c68cca72dd80aca67a4b1066619c7c7b5624c0971da32",
+  "result_sha256": "5b2c39b7a638f5b8eecea0ae0c11b20f0ee49b4e70b9013d54a887d04b828d34",
+  "versions": {
+    "python": "3.13.15",
+    "soup-cli": "0.77.0",
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "trl": "0.29.1",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.14.0",
+    "datasets": "4.8.5",
+    "gpus": [
+      "Tesla T4, 580.178.04",
+      "Tesla T4, 580.178.04"
+    ]
+  }
+}

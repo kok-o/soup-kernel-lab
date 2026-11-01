@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "3b8c970104baf9e4c5eed6927ca63b0373243ed5d37450f3027e629431c47f3c",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_speed_all4_screen",
+      "source_commit": "bc34f6be7a2386bf133bcd2d9d9c707dd4a1d641",
+      "solution_sha256": "597f15e11b0f7c1914a14b0392b11242269382fee2b4c32f5aaccd912b315ef8",
+      "result_sha256": "721b012eea997a5e383e548cfbb5a573552caeecc7d62cc8d292399c02d724ad",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 66.74,
+          "gpu_peak_mib": 2643,
+          "train_loop_s": 40.95,
+          "eval_loss": 2.05312
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

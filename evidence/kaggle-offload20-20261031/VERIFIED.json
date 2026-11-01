@@ -1,0 +1,89 @@
+{
+  "source": "304722792b5b9b44d9dae454487e27f728ff2e8f",
+  "raw_sha256": "b7f33443e4bdc699d299c36152537443e662da005a25aec2eedb60919c52cbc2",
+  "manifest_entries": 138,
+  "source_files": 95,
+  "all_checks": 10,
+  "summary": {
+    "base": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 82.72,
+      "gpu_peak_mib": 14345,
+      "train_loop_s": 59.52,
+      "eval_loss": 2.04965
+    },
+    "solution": {
+      "ok": true,
+      "runs": 2,
+      "wall_s": 66.84,
+      "gpu_peak_mib": 729,
+      "train_loop_s": 42.25,
+      "eval_loss": 2.05209
+    },
+    "ratios": {
+      "speedup": 1.2376,
+      "memory_ratio": 19.6776,
+      "quality_delta_pct": 0.119
+    }
+  },
+  "versions": {
+    "python": "3.13.15",
+    "soup-cli": "0.77.0",
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "trl": "0.29.1",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.14.0",
+    "datasets": "4.8.5",
+    "gpus": [
+      "Tesla T4, 580.178.04",
+      "Tesla T4, 580.178.04"
+    ]
+  },
+  "runs": [
+    {
+      "run": "base_1",
+      "wall_s": 82.56,
+      "gpu_peak_mib": 14345
+    },
+    {
+      "run": "base_2",
+      "wall_s": 82.89,
+      "gpu_peak_mib": 14345
+    },
+    {
+      "run": "solution_1",
+      "wall_s": 66.95,
+      "gpu_peak_mib": 729
+    },
+    {
+      "run": "solution_2",
+      "wall_s": 66.74,
+      "gpu_peak_mib": 729
+    }
+  ],
+  "protected_files": [
+    "harness/_train.py",
+    "harness/check_rules.py",
+    "harness/common.py",
+    "harness/eval_adapter.py",
+    "harness/example_reference.py",
+    "harness/run_task.py",
+    "harness/score.py",
+    "task/prepare_data.py",
+    "task/task.yaml",
+    "tests/conftest.py",
+    "tests/test_callback.py",
+    "tests/test_config.py",
+    "tests/test_formats.py",
+    "tests/test_loader.py",
+    "tests/test_trainer_init.py"
+  ],
+  "minimum_own_kernel_share": [
+    "8.2% of the training time (lowest of 2 runs, steps 3+)"
+  ],
+  "tests": ".................................ss..................................... [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 58%]\n........................................................................ [ 77%]\n........................................................................ [ 97%]\n...........                                                              [100%]\n369 passed, 2 skipped in 37.61s\n"
+}

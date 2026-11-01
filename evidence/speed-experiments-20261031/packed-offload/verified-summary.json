@@ -1,0 +1,23 @@
+{
+  "archive_sha256": "c0d009ccdf2e26779aa76e463ef8a31c6e852b1d145ea98fc5b55634d2015164",
+  "manifest_files": 18,
+  "cases": [
+    {
+      "case": "runs_packed_offload_screen",
+      "source_commit": "4ccf655e3d678f537ce8242ad11598b8b046ae28",
+      "solution_sha256": "a1f632b166c307126931361a5522616bdee81b0a92754ad7a636dd2ddb0e356c",
+      "result_sha256": "ccf5dca0653ff61e7260ea06b7f14dfc887f136c2cb7fbaca72139164ffdcc19",
+      "summary": {
+        "solution": {
+          "ok": true,
+          "runs": 1,
+          "wall_s": 66.83,
+          "gpu_peak_mib": 2463,
+          "train_loop_s": 41.57,
+          "eval_loss": 2.05207
+        }
+      },
+      "official_checks": null
+    }
+  ]
+}

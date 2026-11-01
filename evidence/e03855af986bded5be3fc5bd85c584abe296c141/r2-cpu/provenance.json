@@ -1,0 +1,53 @@
+{
+  "scope": "CPU correctness/regression tests only; no GPU performance or official T4 admission claim",
+  "r2_tested_source_commit": "e03855af986bded5be3fc5bd85c584abe296c141",
+  "source_provenance": "Tests executed on the exact source files subsequently committed as this SHA; checksums included.",
+  "r1_compatibility_commit": "00d00d6b678548851b4725c390bbd91152f411a3",
+  "integration_method": "Archive R1 commit to isolated scratch directory, overlay the three R2 Python files; no R1 changes copied into R2 branch.",
+  "device": "cpu",
+  "cuda_available": false,
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.12.14"
+  },
+  "packages": {
+    "torch": "2.11.0",
+    "transformers": "5.16.1",
+    "trl": "0.29.1",
+    "peft": "0.20.0",
+    "accelerate": "1.14.0",
+    "soup-cli": "0.77.0",
+    "pytest": "9.2.0"
+  },
+  "command": "SOUP_APPLY_SOLUTION=1 HF_HUB_OFFLINE=1 HF_DATASETS_OFFLINE=1 python -m pytest solution tests -q --junitxml=<report>",
+  "checks": [
+    {
+      "report": "pytest-standalone.xml",
+      "passed": 119,
+      "skipped": 13,
+      "failures": 0
+    },
+    {
+      "report": "pytest-with-r1.xml",
+      "passed": 140,
+      "skipped": 18,
+      "failures": 0
+    }
+  ],
+  "r2_source_sha256": {
+    "solution/__init__.py": "4e9b0464bf88a0909c6f7e0e4ad120a24a20f3289165e9d8e1a5cacaff00dd52",
+    "solution/chunked_head.py": "6315b1a81d78af62410cda28d411620cf9ef0c18346eb4f85175a9106721bb13",
+    "solution/test_chunked_head.py": "98741beaf183dce39031660d0937cb105343508ff65a885378499ccf75a7767c"
+  },
+  "unchanged_r1_source_sha256": {
+    "solution/ce.py": "02b8ed775215f580ce06929b9c46eb77f33fa2a7a05fa9f7bec359fac81b0d43",
+    "solution/_ce_kernels.py": "cc3ac456e207bf2c75624318913827f8a3e756be7633f347a832e8dbf0a2f40e",
+    "solution/ce_patch.py": "b19133dd4c2d0c06d1d4d3047fffa7347cb7ceb600ecfb3d924ca17c2215b301",
+    "solution/test_ce.py": "53b3ec14a4aa989d44f6de097a535ac7cd084461188db5c975300ce26ec19580",
+    "solution/test_ce_patch.py": "192af8b060a1ea3ace05f5998f136020a5208a7b85fdf799383f3ef7a6208416"
+  },
+  "official_harness_run": false,
+  "t4_measurement": false,
+  "triton_cuda_kernels_executed": false
+}

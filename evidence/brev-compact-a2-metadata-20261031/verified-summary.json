@@ -1,0 +1,69 @@
+{
+  "archive_sha256": "35f93162d6cf9f85105a3680d827b10cb776ca16cc593b415cdf87de3ba84cc2",
+  "manifest_files": 32,
+  "sources_match_git": true,
+  "pair_sources_checked_before_after": true,
+  "paired_median_s": {
+    "A": 48.345,
+    "B": 45.635000000000005
+  },
+  "diagnostic_only_not_kaggle": true,
+  "summary": {
+    "platform": "Brev Tesla T4, not Kaggle qualification",
+    "sources": {
+      "compact-dropout": {
+        "commit": "35ea24c796a35a93e8beca5943675fc4fae70d16",
+        "solution_sha256": "3172cf8b138a331262bb63a471a31f67e2936336bb78ca13fc5192ade6a46ce5",
+        "snapshot": "post-run; pair records also check before and after"
+      },
+      "compact-a2-metadata-v2": {
+        "commit": "a9ac67ea6c17e61127613e976d39a096a298058d",
+        "solution_sha256": "53d2057ac60abda2d7ec00a441c91d5b20bb9551973a874582cb1e12e98e338d",
+        "snapshot": "post-run; pair records also check before and after"
+      }
+    },
+    "first_screen": {
+      "solution": {
+        "ok": true,
+        "runs": 1,
+        "wall_s": 45.36,
+        "gpu_peak_mib": 2307,
+        "train_loop_s": 29.93,
+        "eval_loss": 2.05204
+      }
+    },
+    "paired_order": [
+      "A0",
+      "B1",
+      "B2",
+      "A3"
+    ],
+    "paired_train_only": true,
+    "paired": [
+      {
+        "label": "A0",
+        "source": "compact-dropout",
+        "wall_s": 47.82,
+        "peak_mib": 2307
+      },
+      {
+        "label": "B1",
+        "source": "compact-a2-metadata-v2",
+        "wall_s": 45.21,
+        "peak_mib": 2307
+      },
+      {
+        "label": "B2",
+        "source": "compact-a2-metadata-v2",
+        "wall_s": 46.06,
+        "peak_mib": 2307
+      },
+      {
+        "label": "A3",
+        "source": "compact-dropout",
+        "wall_s": 48.87,
+        "peak_mib": 2307
+      }
+    ]
+  }
+}
