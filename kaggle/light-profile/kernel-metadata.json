@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-light-profile",
+  "title": "Soup Lab Light Profile",
+  "code_file": "soup-lab-light-profile.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}
