@@ -2,7 +2,7 @@
 
 This is a personal post-hackathon experiment, not a change to the historical submission.
 
-Control: `60e973dc` (resolve the full SHA before submitting), whose runtime files exactly match historical `652334f3`: 20 activation layers offloaded, 8 resident, bounded slot-view metadata cache.
+Control: `60e973d310ad4b25ecf2eb3d18df284f7a563fcc`, whose runtime files exactly match historical `652334f3`: 20 activation layers offloaded, 8 resident, bounded slot-view metadata cache.
 
 Candidate: the same runtime with the single change `patch_selective_offload(layers=28)` in `solution/__init__.py`. Native NF4 arithmetic, the two weight slots, head chunk 8192, codecs, data, RNG, LoRA and original official files stay fixed.
 
