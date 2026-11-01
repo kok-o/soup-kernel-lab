@@ -21,6 +21,7 @@ def main():
     p.add_argument('--prepare-only', action='store_true')
     p.add_argument('--modes', nargs='+', choices=('phases', 'timeline', 'memory'), default=['phases', 'timeline', 'memory'])
     p.add_argument('--light-timeline', action='store_true')
+    p.add_argument('--trace-steps', type=int, default=3)
     a = p.parse_args()
     assert len(a.commit) == 40 and all(c in '0123456789abcdef' for c in a.commit)
     out = a.out.resolve()
@@ -45,7 +46,7 @@ def main():
         print('DIAGNOSTIC MODE:', mode, flush=True)
         command = [sys.executable, str(observer), '--source', str(root), '--out', str(directory), '--mode', mode]
         if a.light_timeline and mode == 'timeline':
-            command.append('--light-timeline')
+            command.extend(['--light-timeline', '--trace-steps', str(a.trace_steps)])
         rc = subprocess.run(command, cwd=root).returncode
         record['results'][mode] = {'exit_code': rc}
         if (directory / 'PARENT.json').exists():
