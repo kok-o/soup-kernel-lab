@@ -20,3 +20,7 @@ Previously rejected ideas must not be presented as untested:
 - INT8 frozen-weight branch `5760de2`: only 8/10 checks; not a qualified reserve.
 
 Use fresh transfer and phase profiles before revisiting these ideas. No prediction is a measured result.
+
+## Measured result
+
+Kaggle65.33 s /495 MiB, all10 original checks. Fresh control63.88 s /729 MiB in the same session. [Full report and raw evidence](../evidence/kaggle-offload28-slotviews-20261101/README.md). The memory target is met; speed was not improved.

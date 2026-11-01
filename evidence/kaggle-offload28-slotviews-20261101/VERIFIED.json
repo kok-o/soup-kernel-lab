@@ -1,0 +1,194 @@
+{
+  "control": {
+    "commit": "60e973d310ad4b25ecf2eb3d18df284f7a563fcc",
+    "raw_sha256": "dd875b89f7133e099777dc3c517793316e53d40c1551d3bc30acecfd1581d2c5",
+    "all_checks": 10,
+    "source_files": 96,
+    "official_files": 15,
+    "summary": {
+      "base": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 88.06,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 61.11,
+        "eval_loss": 2.04965
+      },
+      "solution": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 63.88,
+        "gpu_peak_mib": 729,
+        "train_loop_s": 40.7,
+        "eval_loss": 2.05214
+      },
+      "ratios": {
+        "speedup": 1.3785,
+        "memory_ratio": 19.6776,
+        "quality_delta_pct": 0.121
+      }
+    },
+    "versions": {
+      "python": "3.13.15",
+      "soup-cli": "0.77.0",
+      "torch": "2.11.0+cu128",
+      "triton": "3.6.0",
+      "transformers": "5.16.1",
+      "peft": "0.20.0",
+      "trl": "0.29.1",
+      "bitsandbytes": "0.50.2",
+      "accelerate": "1.14.0",
+      "datasets": "4.8.5",
+      "gpus": [
+        "Tesla T4, 580.178.04",
+        "Tesla T4, 580.178.04"
+      ]
+    },
+    "runs": [
+      {
+        "run": "base_1",
+        "wall_s": 88.99,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 56.84,
+        "apply_s": null,
+        "torch_max_allocated_mib": 13373.2,
+        "torch_max_reserved_mib": 14202.0
+      },
+      {
+        "run": "base_2",
+        "wall_s": 87.13,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 65.38,
+        "apply_s": null,
+        "torch_max_allocated_mib": 13373.2,
+        "torch_max_reserved_mib": 14202.0
+      },
+      {
+        "run": "solution_1",
+        "wall_s": 63.17,
+        "gpu_peak_mib": 729,
+        "train_loop_s": 40.05,
+        "apply_s": 5.18,
+        "torch_max_allocated_mib": 494.6,
+        "torch_max_reserved_mib": 562.0
+      },
+      {
+        "run": "solution_2",
+        "wall_s": 64.58,
+        "gpu_peak_mib": 729,
+        "train_loop_s": 41.34,
+        "apply_s": 5.18,
+        "torch_max_allocated_mib": 494.6,
+        "torch_max_reserved_mib": 562.0
+      }
+    ],
+    "data_sha256": {
+      "data/eval_public.jsonl": "b7f85b78ba3186dce4deab7cfb8bf8dcf7998e1517c5749ac0f5005886c6f70e",
+      "data/train.jsonl": "93d036d912bd81c337dc29893e13a76f36161d96f896ef4e02492e2f1a21a0dd"
+    },
+    "own_kernel_share": [
+      "8.1% of the training time (lowest of 2 runs, steps 3+)"
+    ],
+    "tests": ".................................ss..................................... [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 58%]\n........................................................................ [ 77%]\n........................................................................ [ 96%]\n............                                                             [100%]\n=============================== warnings summary ===============================\nsolution/test_stream_view_cache.py::test_native_nf4_slot_view_cache_parity_alias_and_mutation\n  /usr/local/lib/python3.13/dist-packages/bitsandbytes/backends/cuda/ops.py:957: UserWarning: inner dimension (96) is not aligned for fast kernel with blocksize=64, falling back to slower implementation.\n    warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n370 passed, 2 skipped, 1 warning in 36.48s\n"
+  },
+  "candidate": {
+    "commit": "06dc4b1957fbe1e23b4b32fa420d3205890fa553",
+    "raw_sha256": "6f3400316df2b274ac35a54c74846dd5f248862d62a48f0b8ff2151be6fae09c",
+    "all_checks": 10,
+    "source_files": 96,
+    "official_files": 15,
+    "summary": {
+      "base": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 86.44,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 64.97,
+        "eval_loss": 2.04963
+      },
+      "solution": {
+        "ok": true,
+        "runs": 2,
+        "wall_s": 65.33,
+        "gpu_peak_mib": 495,
+        "train_loop_s": 41.97,
+        "eval_loss": 2.0521
+      },
+      "ratios": {
+        "speedup": 1.3231,
+        "memory_ratio": 28.9798,
+        "quality_delta_pct": 0.121
+      }
+    },
+    "versions": {
+      "python": "3.13.15",
+      "soup-cli": "0.77.0",
+      "torch": "2.11.0+cu128",
+      "triton": "3.6.0",
+      "transformers": "5.16.1",
+      "peft": "0.20.0",
+      "trl": "0.29.1",
+      "bitsandbytes": "0.50.2",
+      "accelerate": "1.14.0",
+      "datasets": "4.8.5",
+      "gpus": [
+        "Tesla T4, 580.178.04",
+        "Tesla T4, 580.178.04"
+      ]
+    },
+    "runs": [
+      {
+        "run": "base_1",
+        "wall_s": 85.84,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 64.42,
+        "apply_s": null,
+        "torch_max_allocated_mib": 13373.2,
+        "torch_max_reserved_mib": 14202.0
+      },
+      {
+        "run": "base_2",
+        "wall_s": 87.04,
+        "gpu_peak_mib": 14345,
+        "train_loop_s": 65.52,
+        "apply_s": null,
+        "torch_max_allocated_mib": 13373.2,
+        "torch_max_reserved_mib": 14202.0
+      },
+      {
+        "run": "solution_1",
+        "wall_s": 65.23,
+        "gpu_peak_mib": 495,
+        "train_loop_s": 41.85,
+        "apply_s": 5.25,
+        "torch_max_allocated_mib": 275.1,
+        "torch_max_reserved_mib": 326.0
+      },
+      {
+        "run": "solution_2",
+        "wall_s": 65.43,
+        "gpu_peak_mib": 495,
+        "train_loop_s": 42.08,
+        "apply_s": 5.11,
+        "torch_max_allocated_mib": 275.1,
+        "torch_max_reserved_mib": 326.0
+      }
+    ],
+    "data_sha256": {
+      "data/eval_public.jsonl": "b7f85b78ba3186dce4deab7cfb8bf8dcf7998e1517c5749ac0f5005886c6f70e",
+      "data/train.jsonl": "93d036d912bd81c337dc29893e13a76f36161d96f896ef4e02492e2f1a21a0dd"
+    },
+    "own_kernel_share": [
+      "7.8% of the training time (lowest of 2 runs, steps 3+)"
+    ],
+    "tests": ".................................ss..................................... [ 19%]\n........................................................................ [ 38%]\n........................................................................ [ 58%]\n........................................................................ [ 77%]\n........................................................................ [ 96%]\n............                                                             [100%]\n=============================== warnings summary ===============================\nsolution/test_stream_view_cache.py::test_native_nf4_slot_view_cache_parity_alias_and_mutation\n  /usr/local/lib/python3.13/dist-packages/bitsandbytes/backends/cuda/ops.py:957: UserWarning: inner dimension (96) is not aligned for fast kernel with blocksize=64, falling back to slower implementation.\n    warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n370 passed, 2 skipped, 1 warning in 18.91s\n"
+  },
+  "limitations": "Sequential original 2+2 ABBA suites on one Kaggle session; report base drift. Historical 61.40s is not the new control time.",
+  "all_base_times_s": [
+    88.99,
+    87.13,
+    85.84,
+    87.04
+  ],
+  "base_range_s": 3.1499999999999915
+}
