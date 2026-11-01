@@ -132,7 +132,10 @@ def streamed_linear(x,host,pool,bias=None):
             dx=None
             if ctx.needs_input_grad[0]:
                 with ctx.pool.acquire(ctx.host) as (packed,state):
-                    dx=torch.matmul(dy,F.dequantize_4bit(packed,state).to(dy.dtype))
+                    weight=F.dequantize_4bit(packed,state).to(dy.dtype)
+                # Only decode reads the packed slot. The dense tensor owns its
+                # storage, so H2D may reuse the slot while GEMM consumes weight.
+                dx=torch.matmul(dy,weight)
             return dx,db
     if x.numel()==0:raise ValueError('empty input requires native fallback before streaming')
     return Stream.apply(x,bias)
