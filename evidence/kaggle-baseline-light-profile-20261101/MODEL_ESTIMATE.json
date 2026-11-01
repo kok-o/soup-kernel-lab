@@ -1,0 +1,50 @@
+{
+  "classification": "EXPLICIT ESTIMATE, not measured full-run categories",
+  "source": "06dc4b1957fbe1e23b4b32fa420d3205890fa553",
+  "qualified_reference": {
+    "wall_s": 62.81,
+    "train_loop_s": 39.65,
+    "outside_training_s": 23.16,
+    "apply_s": 5.125,
+    "other_outside_apply_s": 18.035,
+    "evidence": "evidence/kaggle-bulk-h2d-20261101/control-raw-evidence.zip"
+  },
+  "sample_steps": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "sample_reference_s": 5.3201,
+  "profiled_sample_s": 7.900935658,
+  "profiler_extra_s": 2.580835658,
+  "assumptions": [
+    "GPU kernel/copy durations in the profiled window approximate those in the matched phase window.",
+    "The eight variable-length steps represent the full loop sufficiently for rough order-of-seconds prioritization.",
+    "The whole observed profiler slowdown is assigned to the residual host/API/gap bucket; this is a model, not causal removal evidence.",
+    "T4 sessions differ. This normalization does not constitute a new qualified measurement."
+  ],
+  "formula": "hardware seconds / reference_phase_sample_s * qualified_train_loop_s; host/API/unknown is the residual",
+  "estimated_loop_s": {
+    "compute": 18.623408697876773,
+    "copies_without_compute": 9.763338140272452,
+    "host_api_and_unresolved_waits": 11.263253161850775
+  },
+  "optimistic_all_copy_overlap_full_s": 53.04666185972755,
+  "remaining_to_46_s": 16.810000000000002,
+  "next_direction": {
+    "name": "Bounded layer-level activation transfer pipeline sharing existing staging storage",
+    "estimated_potential_s": [
+      3,
+      6
+    ],
+    "activation_dma_only_budget_s": 5.713370655273419,
+    "native_dequant_elimination_ceiling_s": 2.0331116550534754,
+    "head_statistics_elimination_ceiling_s": 0.15076079828386685,
+    "status": "Not implemented or launched; no new candidates after user steering"
+  }
+}

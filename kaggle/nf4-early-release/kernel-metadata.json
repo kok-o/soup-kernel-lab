@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-nf4-early-release",
+  "title": "Soup Lab NF4 Early Release",
+  "code_file": "soup-lab-nf4-early-release.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

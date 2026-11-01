@@ -1,0 +1,39 @@
+{
+  "classification": "DIAGNOSTIC ONLY; not qualification",
+  "commit": "06dc4b1957fbe1e23b4b32fa420d3205890fa553",
+  "source_files": 96,
+  "official_files": 15,
+  "raw_sha256": "f7e1b94502e471f7dafe3f34f8ed1f7613dba7d19177275f871ff29b9530a6cc",
+  "modes": {
+    "phases": {
+      "external_diagnostic": {
+        "exit_code": 0,
+        "wall_s": 68.44,
+        "peak_mib": 495,
+        "idle_mib": 0
+      },
+      "steps": 64,
+      "warnings": []
+    },
+    "timeline": {
+      "external_diagnostic": {
+        "exit_code": 0,
+        "wall_s": 143.99,
+        "peak_mib": 507,
+        "idle_mib": 0
+      },
+      "steps": 64,
+      "warnings": []
+    },
+    "memory": {
+      "external_diagnostic": {
+        "exit_code": 0,
+        "wall_s": 417.0,
+        "peak_mib": 495,
+        "idle_mib": 0
+      },
+      "steps": 64,
+      "warnings": []
+    }
+  }
+}

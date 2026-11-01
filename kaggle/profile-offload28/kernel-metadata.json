@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-profile-offload28",
+  "title": "Soup Lab Profile Offload28",
+  "code_file": "soup-lab-profile-offload28.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

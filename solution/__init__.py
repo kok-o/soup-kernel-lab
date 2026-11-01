@@ -47,7 +47,7 @@ def apply():
     register_linear_backend(None)
     patch_chunked_head(chunk_size=512, compact=True, forward_gradient=True)
     from .selective_offload import patch_selective_offload
-    patch_selective_offload(layers=20)
+    patch_selective_offload(layers=28)
     patch_activation_storage(bits=4, block=64, wide_only=True, offload="selective")
     patch_quantized_casts()
     from .rmsnorm import patch_qwen_rmsnorm

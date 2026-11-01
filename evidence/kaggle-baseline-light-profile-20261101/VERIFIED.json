@@ -1,0 +1,31 @@
+{
+  "classification": "DIAGNOSTIC ONLY",
+  "source": "06dc4b1957fbe1e23b4b32fa420d3205890fa553",
+  "source_files": 96,
+  "official_files": 15,
+  "raw_sha256": "0ece550f00812b82eae6f480ea1384c2a5d0c5cbb6fc3dcbc4e536797ca9da67",
+  "all_manifest_entries_verified": true,
+  "source_git_bytes_verified": true,
+  "modes": {
+    "phases": {
+      "exit_code": 0,
+      "steps": 64,
+      "diagnostic": {
+        "exit_code": 0,
+        "wall_s": 71.53,
+        "peak_mib": 495,
+        "idle_mib": 0
+      }
+    },
+    "timeline": {
+      "exit_code": 0,
+      "steps": 64,
+      "diagnostic": {
+        "exit_code": 0,
+        "wall_s": 155.64,
+        "peak_mib": 507,
+        "idle_mib": 0
+      }
+    }
+  }
+}

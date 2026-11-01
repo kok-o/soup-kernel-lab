@@ -3,6 +3,33 @@
 Personal research repository for experimenting with Soup training performance and GPU memory.
 Independent repository, not a fork or a new competition submission.
 
+## Current research decision
+
+The selected runtime on this research branch is restored byte-for-byte to
+`06dc4b1957fbe1e23b4b32fa420d3205890fa553`: all28 activation layers offloaded,
+8192-row head, native NF4 and the original conservative leases. Its fresh
+Kaggle T4 control is **62.81 s full cold /495 MiB external peak,10/10 checks**.
+The <=46 s target remains unmet. This does not update the preserved historical
+`main` baseline or the original hackathon notebook.
+
+| Completed experiment | Fresh control | Candidate | Decision |
+|---|---|---|---|
+| [Bulk activation H2D](evidence/kaggle-bulk-h2d-20261101/README.md) | 62.81 s /495 MiB | 62.55 s /495 MiB | No convincing speed gain; not selected |
+| [Early NF4 lease release](evidence/kaggle-nf4-early-release-20261101/README.md) | 67.47 s /495 MiB | 68.00 s /495 MiB | Rejected for speed |
+| [Head4096](evidence/kaggle-head4096-20261101/README.md) | 64.80 s /495 MiB | 64.95 s /475 MiB | Memory tradeoff only; original head retained |
+
+Each row is its own same-session pair of original 2+2 ABBA suites, with all ten
+checks and source-bound raw archives. Times from different rows are not
+directly comparable because the T4 sessions drift. Candidate code and pinned
+notebooks remain available, without installing rejected changes by default.
+
+[Fresh phase, CUDA and allocation profile](evidence/kaggle-offload28-profile-20261101/README.md)
+is diagnostic only. Heavy profiling doubled the observed three-step window;
+its CPU gaps are not accepted full-run overhead. The
+[time-budget report](evidence/kaggle-baseline-light-profile-20261101/README.md)
+separates measured coverage from approximate full-cycle estimates and records
+the next direction's3-6 s hypothesis. No new candidates are being started.
+
 ## Start on Kaggle
 
 - [New research notebook](https://www.kaggle.com/code/koko667/soup-kernel-lab-independent-experiments) (private to its owner initially).

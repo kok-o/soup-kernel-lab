@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-bulk-h2d",
+  "title": "Soup Lab Bulk H2D",
+  "code_file": "soup-lab-bulk-h2d.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "koko667/soup-lab-offload28-compare",
+  "title": "Soup Lab Offload28 Compare",
+  "code_file": "soup-lab-offload28-compare.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "kernel_sources": []
+}
