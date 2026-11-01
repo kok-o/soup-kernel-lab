@@ -29,7 +29,7 @@ class PhaseMonitor:
         self.codes = {}
         self.local = threading.local()
         self.marks = []
-        self.tool = next(i for i in (5, 4, 3, 2) if sys.monitoring.get_tool(i) is None)
+        self.tool = next(i for i in (2, 4, 3, 5) if sys.monitoring.get_tool(i) is None)
         m = sys.monitoring
         m.use_tool_id(self.tool, 'soup-diagnostic-phases')
         m.register_callback(self.tool, m.events.PY_START, self.enter)
